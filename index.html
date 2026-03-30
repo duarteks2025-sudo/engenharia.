@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta name="google-site-verification" content="eCJWfljz_muQ6GoPs1ImHw2VnQWUABnazXWcm-WML1Q" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Regularização de Imóveis em Santa Catarina | Habite-se | INSS de Obra | Duarte Engenharia</title>
+<meta name="description" content="Regularização de imóveis, perícia em engenharia civil e regularização fiscal de obras em SC. CREA-SC 191277-4 | CREA-RS 253921. Mais de 300 imóveis regularizados."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<style>
+:root{
+  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#A07B2A;
+  --black:#080808;--black2:#111;--black3:#1a1a1a;
+  --white:#fff;--muted:rgba(255,255,255,.55);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black2)}::-webkit-scrollbar-thumb{background:var(--gold)}
+a{text-decoration:none;color:inherit}
+
+/* ── LOGO SVG ── */
+.logo-svg-wrap{width:50px;height:50px;flex-shrink:0}
+.logo-svg-wrap svg{width:100%;height:100%;display:block}
+
+/* ── TEXT JUSTIFY ── */
+p, .hero-sub, .ssub, .prob-card p, .svc-card p, .dif-card p,
+.testi-quote, .sobre-content p, .faq-a-inner, .contato-info p,
+.art-box p, .svc-callout-text p, .step p, .diag-cta-box p,
+.footer-brand p, .footer-meta, .ci-note {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba(8,8,8,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.13)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-text .brand{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;letter-spacing:2px;display:block}
+.logo-text .sub{font-size:.56rem;letter-spacing:3px;color:var(--gold);text-transform:uppercase}
+.nav-links{display:flex;gap:1.6rem;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);font-size:.76rem;letter-spacing:.5px;font-weight:500;transition:.2s;text-transform:uppercase}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{background:var(--gold);color:var(--black);padding:.45rem 1rem;border-radius:4px;font-size:.74rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:.2s;white-space:nowrap}
+.nav-cta:hover{background:var(--gold-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
+.hamburger span{width:23px;height:2px;background:var(--gold);border-radius:2px}
+.mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,8,8,.98);padding:2rem 5%;border-bottom:1px solid rgba(201,168,76,.18);z-index:998}
+.mob-menu.open{display:block}
+.mob-menu ul{list-style:none;display:flex;flex-direction:column;gap:1.2rem}
+.mob-menu a{color:rgba(255,255,255,.8);font-size:.9rem;letter-spacing:.5px;text-transform:uppercase}
+.mob-menu a:hover{color:var(--gold)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:0}
+.hero-bg{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 60% 80% at 75% 60%, rgba(201,168,76,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 60% at 85% 80%, rgba(180,120,20,.25) 0%, transparent 50%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(100,60,0,.6) 0%, transparent 55%),
+    linear-gradient(160deg, #050505 0%, #0d0d0d 40%, #1a1200 100%);
+  animation:heroZoom 16s ease-in-out infinite alternate;
+}
+/* Fake city lights dots */
+.hero-bg::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    radial-gradient(1.5px 1.5px at 62% 72%, rgba(255,200,80,.7), transparent),
+    radial-gradient(1px 1px at 68% 78%, rgba(255,220,100,.5), transparent),
+    radial-gradient(2px 2px at 74% 65%, rgba(255,180,50,.6), transparent),
+    radial-gradient(1px 1px at 80% 80%, rgba(255,200,80,.4), transparent),
+    radial-gradient(1.5px 1.5px at 71% 85%, rgba(255,160,40,.5), transparent),
+    radial-gradient(1px 1px at 78% 70%, rgba(255,220,120,.6), transparent),
+    radial-gradient(2px 2px at 66% 88%, rgba(200,140,30,.4), transparent),
+    radial-gradient(1px 1px at 84% 75%, rgba(255,200,80,.5), transparent),
+    radial-gradient(1.5px 1.5px at 76% 60%, rgba(255,180,60,.4), transparent),
+    radial-gradient(1px 1px at 88% 82%, rgba(255,160,50,.3), transparent);
+  background-size:100% 100%;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 45%,rgba(0,0,0,.15) 100%)}
+/* Portrait placeholder - styled like the actual photo */
+.hero-portrait-wrap{
+  position:absolute;right:0;bottom:0;height:100%;width:48%;
+  display:flex;align-items:flex-end;justify-content:center;
+  mask-image:linear-gradient(to left,rgba(0,0,0,1) 55%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to left,rgba(0,0,0,1) 55%,transparent 100%);
+}
+.hero-portrait{
+  height:100%;max-width:100%;object-fit:cover;object-position:top center;
+  display:block;
+}
+.hero-portrait-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(170deg,#0d0d0d 0%,#1a1205 40%,#2a1e00 100%);
+  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+  padding-bottom:3rem;gap:.5rem;
+}
+.hero-portrait-placeholder .ph-icon{
+  width:120px;height:120px;border-radius:50%;
+  background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.05));
+  border:2px solid rgba(201,168,76,.3);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:.5rem;
+}
+.hero-portrait-placeholder p{font-size:.75rem;color:rgba(201,168,76,.5);text-align:center;line-height:1.5;max-width:200px}
+.hero-portrait-placeholder .ph-label{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.5px}
+.hero-content{position:relative;z-index:2;max-width:620px;padding:100px 5% 60px}
+@keyframes heroZoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.4);padding:.36rem .9rem;border-radius:30px;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;background:rgba(201,168,76,.05)}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
+h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.8vw,3rem);font-weight:800;line-height:1.15;margin-bottom:1.2rem}
+h1.hero-title span{color:var(--gold)}
+.hero-sub{font-size:.96rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:2rem}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2.4rem}
+.btn-gold{display:inline-flex;align-items:center;gap:.5rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);padding:.8rem 1.6rem;border-radius:6px;font-weight:700;font-size:.84rem;letter-spacing:.3px;transition:.25s;border:none;cursor:pointer;white-space:nowrap}
+.btn-gold:hover{background:linear-gradient(135deg,var(--gold-light),var(--gold));transform:translateY(-2px);box-shadow:0 8px 28px rgba(201,168,76,.38)}
+.btn-outline{display:inline-flex;align-items:center;gap:.5rem;border:1.5px solid var(--gold);color:var(--gold);padding:.8rem 1.6rem;border-radius:6px;font-weight:600;font-size:.84rem;background:transparent;transition:.25s;cursor:pointer;white-space:nowrap}
+.btn-outline:hover{background:rgba(201,168,76,.09);transform:translateY(-2px)}
+.hero-trust{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.6rem}
+.trust-pill{display:flex;align-items:center;gap:.4rem;font-size:.73rem;color:rgba(255,255,255,.5)}
+.trust-pill svg{width:12px;height:12px;color:var(--gold);flex-shrink:0}
+.hero-stars{display:flex;align-items:center;gap:.5rem;font-size:.73rem;color:var(--muted)}
+.stars-row{display:flex;gap:2px}
+.stars-row svg{width:12px;height:12px;fill:var(--gold)}
+
+/* ── STATS BAR ── */
+.stats-bar{background:var(--black2);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);padding:2rem 5%}
+.stats-inner{display:flex;justify-content:space-around;flex-wrap:wrap;gap:1.5rem;max-width:860px;margin:0 auto;text-align:center}
+.stat-item .num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--gold);line-height:1}
+.stat-item .label{font-size:.68rem;color:var(--muted);letter-spacing:.5px;margin-top:.25rem;text-transform:uppercase}
+
+/* ── SECTION BASE ── */
+section{padding:80px 5%}
+.stag{display:inline-block;font-size:.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(201,168,76,.3);padding-bottom:.3rem;margin-bottom:1rem}
+h2.stitle{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:.85rem}
+h2.stitle span{color:var(--gold)}
+.ssub{color:var(--muted);font-size:.9rem;line-height:1.72;max-width:540px}
+.sec-hdr{margin-bottom:3rem}
+.divider{width:44px;height:2px;background:linear-gradient(90deg,var(--gold),transparent);margin-bottom:1rem}
+.center{text-align:center}.center .ssub,.center .divider{margin-left:auto;margin-right:auto}
+
+/* ── PROBLEMAS ── */
+#problemas{background:var(--black2)}
+.prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
+.prob-card{background:var(--black3);border:1px solid rgba(201,168,76,.11);border-radius:10px;padding:1.6rem;transition:.3s;position:relative;overflow:hidden}
+.prob-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:.4s}
+.prob-card:hover{border-color:rgba(201,168,76,.32);transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.prob-card:hover::before{height:100%}
+.prob-emoji{font-size:1.4rem;margin-bottom:.8rem;display:block}
+.prob-card h3{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:.4rem}
+.prob-card p{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.6}
+
+/* ── DIAGNÓSTICO ── */
+#diagnostico{background:var(--black)}
+.diag-layout{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.diag-list{display:flex;flex-direction:column;gap:.7rem;margin:1.6rem 0}
+.diag-item{display:flex;align-items:center;gap:.8rem;padding:.9rem 1.1rem;background:var(--black2);border:1px solid rgba(201,168,76,.1);border-radius:8px;font-size:.84rem;font-weight:500;cursor:pointer;transition:.2s}
+.diag-item:hover{border-color:rgba(201,168,76,.25)}
+.dq{color:var(--gold);font-size:.9rem;min-width:16px}
+.diag-result{display:none;padding:1.1rem 1.3rem;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.3);border-radius:8px;font-size:.82rem;line-height:1.7;color:rgba(255,255,255,.72);margin-top:.8rem}
+.diag-result.show{display:block}
+.diag-cta-box{background:var(--black2);border:1px solid rgba(201,168,76,.14);border-radius:12px;padding:2rem;text-align:center}
+.diag-cta-box h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.7rem}
+.diag-cta-box p{font-size:.82rem;color:var(--muted);line-height:1.7;margin-bottom:1.4rem}
+.diag-pills{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.6rem;text-align:left}
+.diag-pill{display:flex;align-items:center;gap:.55rem;font-size:.76rem;color:rgba(255,255,255,.6)}
+.diag-pill svg{width:14px;height:14px;color:var(--gold);flex-shrink:0}
+
+/* ── SERVIÇOS ── */
+#servicos{background:var(--black2)}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:2.2rem;border-bottom:1px solid rgba(201,168,76,.12);padding-bottom:0}
+.tab{padding:.6rem 1.1rem;font-size:.75rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;cursor:pointer;color:rgba(255,255,255,.4);border-bottom:2px solid transparent;margin-bottom:-1px;transition:.2s}
+.tab:hover{color:var(--gold)}.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+.tab-panel{display:none}.tab-panel.active{display:block}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
+.svc-card{background:var(--black3);border:1px solid rgba(201,168,76,.1);border-radius:10px;padding:1.7rem;transition:.3s}
+.svc-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-4px);box-shadow:0 14px 36px rgba(0,0,0,.4)}
+.svc-num{font-family:'Playfair Display',serif;font-size:1.7rem;color:rgba(201,168,76,.25);font-weight:700;line-height:1;margin-bottom:.8rem}
+.svc-card h3{font-family:'Playfair Display',serif;font-size:.97rem;margin-bottom:.45rem}
+.svc-card p{font-size:.77rem;color:rgba(255,255,255,.47);line-height:1.6}
+.svc-callout{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1.8rem;margin-top:1.8rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem}
+.svc-callout.alert-pulse{animation:alertPulse 2.5s ease-in-out infinite}
+@keyframes alertPulse{0%,100%{border-color:rgba(201,168,76,.2)}50%{border-color:rgba(201,168,76,.75);box-shadow:0 0 16px rgba(201,168,76,.2)}}
+.svc-callout-text h3{font-family:'Playfair Display',serif;font-size:1.08rem;margin-bottom:.45rem}
+.svc-callout-text p{font-size:.8rem;color:var(--muted)}
+.callout-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+.cpill{font-size:.7rem;color:rgba(201,168,76,.8);padding:.18rem .55rem;border:1px solid rgba(201,168,76,.2);border-radius:20px}
+
+/* ── SOBRE ── */
+#sobre{background:var(--black)}
+.sobre-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:4.5rem;align-items:center}
+.sobre-img-wrap{position:relative}
+.sobre-img-wrap img{width:100%;border-radius:12px;display:block}
+.sobre-img-frame{position:absolute;top:-16px;left:-16px;right:16px;bottom:16px;border:1.5px solid rgba(201,168,76,.2);border-radius:14px;pointer-events:none}
+.sobre-badge{position:absolute;bottom:20px;right:-16px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);border-radius:10px;padding:.85rem 1.1rem;text-align:center;box-shadow:0 8px 26px rgba(0,0,0,.4)}
+.sobre-badge .bnum{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1}
+.sobre-badge .blab{font-size:.62rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.85}
+.sobre-content h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.2vw,2.1rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+.sobre-content p{color:rgba(255,255,255,.57);line-height:1.8;margin-bottom:.85rem;font-size:.88rem}
+.art-box{display:flex;align-items:flex-start;gap:.75rem;background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.18);border-radius:8px;padding:1rem;margin:1.3rem 0}
+.art-box p{font-size:.78rem;color:rgba(255,255,255,.58);line-height:1.65;margin:0}
+.creds{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.6rem}
+.cred-tag{display:flex;align-items:center;gap:.45rem;font-size:.74rem;color:rgba(255,255,255,.62);background:var(--black2);border:1px solid rgba(201,168,76,.12);border-radius:6px;padding:.3rem .7rem}
+.cred-tag::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0}
+
+/* ── PROCESSO ── */
+#processo{background:var(--black2)}
+.steps-wrap{position:relative}
+.steps-line-bg{position:absolute;top:36px;left:calc(10% + 8px);right:calc(10% + 8px);height:1px;background:rgba(201,168,76,.12);z-index:0}
+.steps-line-fill{position:absolute;top:36px;left:calc(10% + 8px);height:1px;width:0;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35));z-index:0;transition:width 1.5s ease}
+.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1}
+.step{text-align:center}
+.step-n{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;box-shadow:0 0 0 7px rgba(201,168,76,.08)}
+.step h3{font-family:'Playfair Display',serif;font-size:.87rem;margin-bottom:.4rem}
+.step p{font-size:.74rem;color:var(--muted);line-height:1.55}
+
+/* ── DEPOIMENTOS ── */
+#depoimentos{background:var(--black)}
+.rating-badge{text-align:center;padding:1.6rem;background:var(--black2);border:1px solid rgba(201,168,76,.14);border-radius:12px;max-width:240px;margin:0 auto 2.5rem}
+.rating-big{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;color:var(--gold);line-height:1}
+.rating-stars{display:flex;justify-content:center;gap:3px;margin:.3rem 0}
+.rating-stars svg{width:15px;height:15px;fill:var(--gold)}
+.rating-sub{font-size:.7rem;color:rgba(255,255,255,.33)}
+.carousel-wrap{position:relative;overflow:hidden}
+.carousel-track{display:flex}
+.carousel-slide{min-width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
+.testi{background:var(--black2);border:1px solid rgba(201,168,76,.11);border-radius:12px;padding:1.6rem;transition:.25s}
+.testi:hover{border-color:rgba(201,168,76,.28);transform:translateY(-3px)}
+.testi-stars{display:flex;gap:2px;margin-bottom:.8rem}
+.testi-stars svg{width:12px;height:12px;fill:var(--gold)}
+.testi-quote{font-size:.82rem;line-height:1.72;color:rgba(255,255,255,.6);margin-bottom:1.1rem;font-style:italic}
+.testi-author{display:flex;align-items:center;gap:.7rem}
+.testi-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.78rem;color:var(--black);flex-shrink:0}
+.testi-name{font-weight:600;font-size:.8rem}
+.testi-role{font-size:.68rem;color:rgba(255,255,255,.36)}
+.carousel-controls{display:flex;align-items:center;justify-content:center;gap:1.1rem;margin-top:1.8rem}
+.car-btn{width:40px;height:40px;border-radius:50%;background:rgba(201,168,76,.09);border:1.5px solid rgba(201,168,76,.28);color:var(--gold);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.25s}
+.car-btn:hover{background:rgba(201,168,76,.18)}
+.car-dots{display:flex;gap:.45rem}
+.car-dot{width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,.22);cursor:pointer;transition:.25s}
+.car-dot.active{background:var(--gold);transform:scale(1.2)}
+
+/* ── DIFERENCIAIS ── */
+#diferenciais{background:var(--black2)}
+.dif-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.3rem}
+.dif-card{background:var(--black3);border:1px solid rgba(201,168,76,.1);border-radius:10px;padding:1.6rem;transition:.25s}
+.dif-card:hover{border-color:rgba(201,168,76,.26);transform:translateY(-3px)}
+.dif-icon{font-size:1.4rem;margin-bottom:.8rem;display:block}
+.dif-card h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem}
+.dif-card p{font-size:.77rem;color:rgba(255,255,255,.47);line-height:1.6}
+
+/* ── FAQ ── */
+#faq{background:var(--black)}
+.faq-wrap{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(201,168,76,.1)}
+.faq-q{width:100%;background:none;border:none;color:var(--white);text-align:left;padding:1.2rem 0;font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:'Inter',sans-serif}
+.faq-q:hover{color:var(--gold)}
+.faq-icon{width:21px;height:21px;border:1.5px solid rgba(201,168,76,.33);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s;color:var(--gold)}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--gold);border-color:var(--gold);color:var(--black)}
+.faq-a{max-height:0;overflow:hidden;transition:.35s ease}
+.faq-a-inner{padding:.1rem 0 1.1rem;font-size:.82rem;line-height:1.76;color:rgba(255,255,255,.5)}
+.faq-item.open .faq-a{max-height:300px}
+
+/* ── CONTATO ── */
+#contato{background:var(--black2)}
+.contato-layout{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.contato-info h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2vw,2rem);line-height:1.2;margin-bottom:.9rem}
+.contato-info p{font-size:.86rem;color:var(--muted);line-height:1.75;margin-bottom:1.8rem}
+.contact-items{display:flex;flex-direction:column;gap:.9rem}
+.contact-item{display:flex;align-items:flex-start;gap:.8rem}
+.ci-icon{font-size:1rem;min-width:22px}
+.ci-label{font-size:.68rem;letter-spacing:.5px;text-transform:uppercase;color:rgba(201,168,76,.7);margin-bottom:.12rem}
+.ci-val{font-size:.86rem;color:rgba(255,255,255,.73);font-weight:500}
+.ci-note{font-size:.7rem;color:rgba(255,255,255,.33);margin-top:.08rem}
+.social-row{display:flex;gap:.8rem;margin-top:1.4rem}
+.social-btn{display:flex;align-items:center;gap:.5rem;padding:.5rem 1rem;border-radius:6px;font-size:.76rem;font-weight:600;transition:.2s;border:1.5px solid rgba(201,168,76,.25);color:rgba(255,255,255,.65)}
+.social-btn:hover{border-color:var(--gold);color:var(--gold)}
+.contato-form{background:var(--black3);border:1px solid rgba(201,168,76,.12);border-radius:12px;padding:2rem}
+.form-title{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:.4rem}
+.form-sub{font-size:.76rem;color:var(--muted);margin-bottom:1.3rem}
+.form-group{margin-bottom:.9rem}
+.form-group label{display:block;font-size:.7rem;letter-spacing:.5px;color:rgba(201,168,76,.8);text-transform:uppercase;margin-bottom:.35rem}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.17);border-radius:6px;padding:.68rem .85rem;color:var(--white);font-size:.84rem;font-family:'Inter',sans-serif;transition:.2s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:rgba(201,168,76,.48);background:rgba(201,168,76,.04)}
+.form-group textarea{resize:vertical;min-height:85px}
+.form-group select option{background:var(--black3)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.form-privacy{font-size:.68rem;color:rgba(255,255,255,.28);margin-top:.8rem;text-align:center}
+
+/* ── CTA FINAL ── */
+#cta-final{background:linear-gradient(135deg,var(--black),#110f08,var(--black));text-align:center;padding:88px 5%;position:relative;overflow:hidden}
+#cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 50% 50%,rgba(201,168,76,.07),transparent)}
+.cta-inner{position:relative;z-index:1;max-width:560px;margin:0 auto}
+#cta-final h2{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.7vw,2.3rem);margin-bottom:.9rem;font-weight:700}
+#cta-final p{color:var(--muted);margin-bottom:2rem;font-size:.9rem;line-height:1.7}
+@keyframes pulseGlow{0%,100%{box-shadow:0 0 0 0 rgba(201,168,76,.5),0 8px 26px rgba(201,168,76,.28)}50%{box-shadow:0 0 0 12px rgba(201,168,76,0),0 8px 26px rgba(201,168,76,.45)}}
+.btn-pulse{animation:pulseGlow 2.2s ease-in-out infinite}
+.cta-warn{font-size:.72rem;color:rgba(201,168,76,.48);margin-top:1rem;letter-spacing:.3px}
+
+/* ── FOOTER ── */
+footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 5% 26px}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:2.8rem;margin-bottom:2.2rem}
+.footer-brand p{font-size:.77rem;color:rgba(255,255,255,.37);line-height:1.7;margin-top:.7rem;max-width:240px}
+.footer-meta{font-size:.68rem;color:rgba(201,168,76,.42);margin-top:.55rem;line-height:1.8}
+.footer-col h4{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.footer-col ul a{color:rgba(255,255,255,.38);font-size:.78rem;transition:.2s}
+.footer-col ul a:hover{color:var(--gold)}
+.footer-social{display:flex;gap:.7rem;margin-top:1rem}
+.footer-social a{width:34px;height:34px;border-radius:50%;border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);transition:.2s;font-size:.75rem}
+.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.05);padding-top:1.3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem}
+.footer-bottom p{font-size:.7rem;color:rgba(255,255,255,.24)}
+
+/* ── WA FLOAT ── */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:888;width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;box-shadow:0 5px 20px rgba(37,211,102,.4);text-decoration:none;animation:waBounce 3s ease-in-out infinite}
+.wa-float:hover{transform:scale(1.1)!important}
+.wa-float svg{width:25px;height:25px;fill:white}
+@keyframes waBounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .nav-links{gap:1.1rem}
+  .nav-links a{font-size:.7rem}
+}
+@media(max-width:960px){
+  .sobre-layout,.contato-layout,.diag-layout{grid-template-columns:1fr;gap:2.5rem}
+  .steps-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .steps-line-bg,.steps-line-fill{display:none}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
+  .form-row{grid-template-columns:1fr}
+  .sobre-badge{right:0}
+  .hero-portrait{max-width:42%;opacity:.65}
+  .svc-callout{flex-direction:column}
+  .svc-callout .btn-gold{width:100%;justify-content:center}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .diag-layout{grid-template-columns:1fr}
+  .stats-inner{gap:1rem}
+  .stat-item .num{font-size:1.7rem}
+  .hero-portrait{display:none}
+  .hero-content{padding:90px 5% 50px;max-width:100%}
+  h1.hero-title{font-size:clamp(1.7rem,5vw,2.4rem)}
+}
+@media(max-width:640px){
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{flex-direction:column;text-align:center}
+  section{padding:58px 5%}
+  .hero-btns{flex-direction:column}
+  .btn-gold,.btn-outline{justify-content:center;width:100%}
+  .steps-grid{grid-template-columns:1fr}
+  .tabs{gap:.2rem;overflow-x:auto;padding-bottom:.5rem;flex-wrap:nowrap}
+  .tab{white-space:nowrap;font-size:.68rem;padding:.5rem .75rem;flex-shrink:0}
+  .prob-grid,.svc-grid,.dif-grid{grid-template-columns:1fr}
+  .carousel-slide{grid-template-columns:1fr}
+  .contato-layout,.sobre-layout,.diag-layout{grid-template-columns:1fr}
+  .sobre-badge{right:10px;bottom:10px}
+  .form-row{grid-template-columns:1fr}
+  .social-row{flex-direction:column}
+  .social-btn{justify-content:center}
+  h2.stitle{font-size:clamp(1.4rem,5vw,1.9rem)}
+  .diag-cta-box{padding:1.4rem}
+  .contato-form{padding:1.4rem}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="logo">
+      <div class="logo-svg-wrap">
+        <img src="logo.png" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+      </div>
+      <div class="logo-text"><span class="brand">DUARTE</span><span class="sub">Engenharia</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#problemas">Problemas</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">A Engenheira</a></li>
+      <li><a href="#depoimentos">Clientes</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="nav-cta">WhatsApp</a>
+    <div class="hamburger" id="ham" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mob-menu" id="mobMenu">
+  <ul>
+    <li><a href="#problemas" onclick="closeMob()">Problemas</a></li>
+    <li><a href="#servicos" onclick="closeMob()">Serviços</a></li>
+    <li><a href="#sobre" onclick="closeMob()">A Engenheira</a></li>
+    <li><a href="#depoimentos" onclick="closeMob()">Clientes</a></li>
+    <li><a href="#faq" onclick="closeMob()">FAQ</a></li>
+    <li><a href="#contato" onclick="closeMob()">Contato</a></li>
+    <li><a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" style="color:var(--gold)">WhatsApp</a></li>
+    <li><a href="https://www.instagram.com/eng.keziaduarte" target="_blank" style="color:var(--gold)">Instagram</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-portrait-wrap">
+    <img src="kezia-hero.png" alt="Eng.ª Kézia Duarte" class="hero-portrait">
+  </div>
+  <div class="hero-content" id="heroContent">
+    <div class="hero-badge">Engenharia Civil · SC</div>
+    <h1 class="hero-title">Regularização de Imóveis<br>e <span>Perícia em Engenharia</span><br>com Segurança Técnica</h1>
+    <p class="hero-sub">Regularize seu imóvel, resolva pendências técnicas e proteja seu patrimônio com acompanhamento profissional especializado. Do habite-se ao laudo pericial — tudo sob responsabilidade técnica com ART.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Falar no WhatsApp
+      </a>
+      <a href="#diagnostico" class="btn-outline">Solicitar análise do imóvel</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>CREA-SC 191277-4</div>
+      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>CREA-RS 253921</div>
+      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>ART em todos os serviços</div>
+      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>+300 imóveis regularizados</div>
+    </div>
+    <div class="hero-stars">
+      <div class="stars-row">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <span><strong style="color:var(--white)">4,9</strong> no Google · CNPJ 47.185.035/0001-06</span>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="num" data-target="300" data-suffix="+">300+</div><div class="label">Imóveis Regularizados</div></div>
+    <div class="stat-item"><div class="num" data-target="2" data-suffix="">2</div><div class="label">Registros CREA (SC e RS)</div></div>
+    <div class="stat-item"><div class="num" data-target="100" data-suffix="%">100%</div><div class="label">ART em Cada Serviço</div></div>
+    <div class="stat-item"><div class="num" data-target="4.9" data-suffix="★">4,9★</div><div class="label">Avaliação dos Clientes</div></div>
+  </div>
+</div>
+
+<!-- PROBLEMAS -->
+<section id="problemas">
+  <div class="sec-hdr">
+    <span class="stag">Situações Comuns</span>
+    <div class="divider"></div>
+    <h2 class="stitle">Seu imóvel pode estar irregular<br><span>sem que você saiba</span></h2>
+    <p class="ssub">A maioria dos proprietários só descobre pendências na hora de vender, financiar ou transmitir por herança — quando o custo de resolver é muito maior.</p>
+  </div>
+  <div class="prob-grid">
+    <div class="prob-card"><span class="prob-emoji">🏚️</span><h3>Imóvel sem Habite-se</h3><p>Sem o Habite-se, o imóvel não pode ser financiado por bancos nem registrado adequadamente. A venda trava ou exige grande desconto.</p></div>
+    <div class="prob-card"><span class="prob-emoji">📐</span><h3>Área diferente da matrícula</h3><p>Discrepância entre a área real e o que está registrado gera problemas em financiamentos, inventários e disputas de divisa.</p></div>
+    <div class="prob-card"><span class="prob-emoji">📋</span><h3>Obra sem CNO na Receita</h3><p>Sem o Cadastro Nacional de Obras, não é possível emitir a CND. O imóvel fica bloqueado para venda e averbação.</p></div>
+    <div class="prob-card"><span class="prob-emoji">💸</span><h3>INSS de obra em aberto</h3><p>Débitos da construção travam a regularização. Mas muitos podem estar decaídos — e não precisam ser pagos.</p></div>
+    <div class="prob-card"><span class="prob-emoji">📄</span><h3>Imóvel sem averbação</h3><p>Construção não averbada não existe juridicamente. Impossível financiar, vender com segurança ou incluir em inventário.</p></div>
+    <div class="prob-card"><span class="prob-emoji">⚖️</span><h3>Necessidade de laudo técnico</h3><p>Disputas judiciais, vícios construtivos, avaliações de patrimônio exigem laudo pericial fundamentado em normas ABNT.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:2.2rem">
+    <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">Verificar meu caso →</a>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section id="diagnostico">
+  <div class="diag-layout">
+    <div>
+      <span class="stag">Diagnóstico Gratuito</span>
+      <div class="divider"></div>
+      <h2 class="stitle">Descubra se seu imóvel está<br><span>irregular em 2 minutos</span></h2>
+      <p class="ssub">Clique em cada item. Se alguma resposta for NÃO, seu imóvel pode precisar de regularização.</p>
+      <div class="diag-list">
+        <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>O imóvel possui Habite-se válido?</span></div>
+        <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>A área construída está igual à matrícula?</span></div>
+        <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>A obra possui CNO na Receita Federal?</span></div>
+        <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>O imóvel está averbado no Cartório de RI?</span></div>
+        <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>Existe pendência com prefeitura ou INSS?</span></div>
+      </div>
+      <div class="diag-result" id="diagResult"><strong style="color:var(--gold)">Atenção:</strong> Cada item não resolvido representa risco jurídico e financeiro. Solicite uma análise técnica gratuita.</div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="margin-top:1.4rem;display:inline-flex">Solicitar análise técnica →</a>
+    </div>
+    <div class="diag-cta-box">
+      <h3>Análise técnica sem custo</h3>
+      <p>Envie as informações básicas do seu imóvel pelo WhatsApp. A Eng.ª Kézia realiza um diagnóstico preliminar gratuito e orienta os próximos passos.</p>
+      <div class="diag-pills">
+        <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</div>
+        <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Resposta em até 24h</div>
+        <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico gratuito</div>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="width:100%;justify-content:center">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Iniciar diagnóstico pelo WhatsApp
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section id="servicos">
+  <div class="sec-hdr center">
+    <span class="stag">O que fazemos</span>
+    <div class="divider"></div>
+    <h2 class="stitle">Serviços de Engenharia <span>Especializados</span></h2>
+    <p class="ssub">Cada serviço conduzido com ART, conformidade técnica e comunicação transparente.</p>
+  </div>
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('imob',this)">Regularização Imobiliária</div>
+    <div class="tab" onclick="switchTab('fisc',this)">Regularização Fiscal</div>
+    <div class="tab" onclick="switchTab('peri',this)">Perícias e Laudos</div>
+    <div class="tab" onclick="switchTab('bomb',this)">Corpo de Bombeiros</div>
+  </div>
+  <div class="tab-panel active" id="tab-imob">
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Aprovação de Projetos e Alvará</h3><p>Obtenção da aprovação do projeto arquitetônico na prefeitura e do alvará de construção.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Habite-se (Prefeitura e Sanitário)</h3><p>Emissão do Habite-se municipal e certificado sanitário. Obrigatório para uso, venda e financiamento.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>Averbação de Construção no Cartório</h3><p>Registro formal da construção na matrícula do imóvel. Sem averbação, a construção juridicamente não existe.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>Desdobro e Unificação de Terrenos</h3><p>Divisão em lotes independentes ou unificação de lotes contíguos, conforme legislação municipal.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Instituição de Condomínio</h3><p>Criação formal de condomínio edilício com convenção, registro e trâmites legais completos.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Retificação de Área</h3><p>Correção da metragem registrada em cartório quando diverge da área real do imóvel.</p></div>
+    </div>
+    <div class="svc-callout">
+      <div class="svc-callout-text">
+        <h3>Regularize e valorize seu imóvel</h3>
+        <p>Um imóvel regular pode valer até <strong style="color:var(--gold)">30% mais</strong> e fica apto para financiamento e transmissão.</p>
+        <div class="callout-pills"><span class="cpill">✦ Apto para financiamento</span><span class="cpill">✦ Herança sem bloqueios</span><span class="cpill">✦ Segurança jurídica total</span></div>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Solicitar análise gratuita</a>
+    </div>
+  </div>
+  <div class="tab-panel" id="tab-fisc">
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Cadastro e Gestão de CNO</h3><p>Abertura e gestão completa do Cadastro Nacional de Obras junto à Receita Federal.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Redução de INSS com FAD</h3><p>Aplicação do Fator de Ajuste para redução legal da base de cálculo do INSS de obra.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>Análise de Decadência de INSS</h3><p>Para obras com mais de 5 anos — análise que pode eliminar legalmente débitos previdenciários antigos.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>Emissão de CND</h3><p>Certidão Negativa de Débitos junto à Receita Federal, indispensável para averbação e financiamento.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Regularização de ISS / ISSQN</h3><p>Regularização do Imposto Sobre Serviços perante o município, incluindo cálculo e negociação de débitos.</p></div>
+    </div>
+    <div class="svc-callout alert-pulse">
+      <div class="svc-callout-text">
+        <h3>⚠ Risco de Aferição Indireta</h3>
+        <p>Obra não declarada corretamente pode gerar <strong style="color:var(--gold)">multas de até 225%</strong> sobre o imposto devido, além de juros e correção monetária.</p>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Analisar INSS da Obra</a>
+    </div>
+  </div>
+  <div class="tab-panel" id="tab-peri">
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>Perícia Judicial em Engenharia Civil</h3><p>Laudos periciais aceitos em tribunais de SC, RS e PR, elaborados por perita habilitada e registrada no CREA.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>Laudo de Vícios Construtivos</h3><p>Identificação de patologias, vícios ocultos, infiltrações e problemas estruturais com fundamentação ABNT.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>Avaliação de Imóveis (ABNT 14653)</h3><p>Avaliação mercadológica e patrimonial para inventários, partilhas e negociações.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>Parecer Técnico de Engenharia</h3><p>Documento fundamentado para situações que exigem opinião profissional habilitada.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Inspeção Predial (ABNT NBR 16747)</h3><p>Avaliação sistemática das condições técnicas, uso, manutenção e desempenho da edificação.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Análise Estrutural</h3><p>Verificação técnica das condições estruturais, identificando riscos e necessidade de reforço.</p></div>
+      <div class="svc-card"><div class="svc-num">07</div><h3>Due Diligence Técnica na Compra</h3><p>Análise completa antes da aquisição, identificando riscos e estimando custos de regularização.</p></div>
+    </div>
+  </div>
+  <div class="tab-panel" id="tab-bomb">
+    <div class="svc-grid">
+      <div class="svc-card"><div class="svc-num">01</div><h3>PPCI – Plano de Prevenção Contra Incêndio</h3><p>Elaboração e aprovação do projeto de prevenção contra incêndio conforme normas do CBMSC.</p></div>
+      <div class="svc-card"><div class="svc-num">02</div><h3>AVCB – Auto de Vistoria do CBMSC</h3><p>Obtenção do Auto de Vistoria, obrigatório para edificações de uso coletivo e comercial.</p></div>
+      <div class="svc-card"><div class="svc-num">03</div><h3>CLCB – Certificado de Licença do CBMSC</h3><p>Emissão do Certificado de Licença para edificações de menor risco junto ao CBMSC.</p></div>
+      <div class="svc-card"><div class="svc-num">04</div><h3>Renovação de Certificados CBMSC</h3><p>Gestão e renovação periódica de AVCB e CLCB, garantindo conformidade contínua.</p></div>
+      <div class="svc-card"><div class="svc-num">05</div><h3>Vistoria e Regularização CBMSC</h3><p>Acompanhamento completo do processo de vistoria até a emissão do certificado.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <div class="sobre-layout">
+    <div class="sobre-img-wrap">
+      <img src="kezia-portrait.png" alt="Eng.ª Kézia Duarte" style="width:100%;border-radius:12px;display:block">
+      <div class="sobre-img-frame"></div>
+      <div class="sobre-badge"><div class="bnum">300+</div><div class="blab">Imóveis<br>Regularizados</div></div>
+    </div>
+    <div>
+      <span class="stag">A Engenheira Responsável</span>
+      <div class="divider"></div>
+      <h2 class="stitle">Eng.ª Civil <span>Kézia Duarte</span></h2>
+      <p>Especialista em regularização imobiliária, perícia em engenharia civil e consultoria técnica, com registro nos CREAs de Santa Catarina e Rio Grande do Sul.</p>
+      <p>Já regularizou mais de 300 imóveis e elaborou laudos periciais reconhecidos em processos judiciais. Cada serviço é executado com ART — garantindo validade jurídica e segurança para o cliente.</p>
+      <div class="art-box">
+        <span style="font-size:1.3rem;flex-shrink:0">🛡️</span>
+        <p><strong style="color:var(--white)">ART em todos os serviços.</strong> A Anotação de Responsabilidade Técnica garante que um profissional habilitado pelo CREA é o responsável técnico. Você está protegido por lei.</p>
+      </div>
+      <div class="creds">
+        <div class="cred-tag">CREA-SC 191277-4</div>
+        <div class="cred-tag">CREA-RS 253921</div>
+        <div class="cred-tag">Perita Judicial</div>
+        <div class="cred-tag">Regularização Imobiliária</div>
+        <div class="cred-tag">Perícia Civil</div>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="display:inline-flex">Agendar Consulta Técnica</a>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESSO -->
+<section id="processo">
+  <div class="sec-hdr center">
+    <span class="stag">Processo de Atendimento</span>
+    <div class="divider"></div>
+    <h2 class="stitle">Como funciona nosso <span>atendimento</span></h2>
+    <p class="ssub">Simples, transparente e totalmente acompanhado por engenheira responsável.</p>
+  </div>
+  <div class="steps-wrap">
+    <div class="steps-line-bg"></div>
+    <div class="steps-line-fill" id="stepsLineFill"></div>
+    <div class="steps-grid" id="stepsGrid">
+      <div class="step"><div class="step-n">01</div><h3>Contato inicial</h3><p>Você entra em contato pelo WhatsApp e descreve sua situação.</p></div>
+      <div class="step"><div class="step-n">02</div><h3>Análise técnica</h3><p>Diagnóstico preliminar gratuito com levantamento dos documentos necessários.</p></div>
+      <div class="step"><div class="step-n">03</div><h3>Proposta técnica</h3><p>Plano de ação com prazo definido e contrato claro.</p></div>
+      <div class="step"><div class="step-n">04</div><h3>Execução</h3><p>Cuidamos de toda burocracia: prefeitura, Receita Federal, cartórios e tribunais.</p></div>
+      <div class="step"><div class="step-n">05</div><h3>Entrega da solução</h3><p>Documentos, certidões e laudos entregues. Patrimônio protegido.</p></div>
+    </div>
+  </div>
+  <div style="text-align:center;margin-top:2.5rem">
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.1rem">O primeiro passo é uma conversa — sem custo, sem compromisso.</p>
+    <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">Iniciar agora pelo WhatsApp →</a>
+  </div>
+</section>
+
+<!-- DEPOIMENTOS -->
+<section id="depoimentos">
+  <div class="sec-hdr center">
+    <span class="stag">Prova Social</span>
+    <div class="divider"></div>
+    <h2 class="stitle">O que dizem nossos <span>clientes</span></h2>
+  </div>
+  <div class="rating-badge">
+    <div class="rating-big">4,9</div>
+    <div class="rating-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+    <p class="rating-sub">Avaliação média · +100 clientes</p>
+  </div>
+  <div class="carousel-wrap">
+    <div class="carousel-track" id="carTrack">
+      <div class="carousel-slide">
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Tinha apartamento com área divergente da escritura há anos. A Kézia resolveu tudo: retificou a área, averbou a construção e identificou pendência de INSS que eu nem sabia. Processo explicado do início ao fim.</p><div class="testi-author"><div class="testi-av">RS</div><div><div class="testi-name">Roberto S.</div><div class="testi-role">Proprietário — Balneário Camboriú</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Comprei imóvel e descobri vícios ocultos depois. A Engenheira Kézia elaborou o laudo pericial completo aceito no processo judicial. Profissionalismo e domínio técnico impressionantes.</p><div class="testi-author"><div class="testi-av">MC</div><div><div class="testi-name">Maria C.</div><div class="testi-role">Advogada — Itajaí</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Precisávamos do habite-se para fechar o financiamento. A Duarte Engenharia cuidou de tudo com a prefeitura e os bombeiros, entregou no prazo. Comunicação sempre clara. Recomendo sem hesitar.</p><div class="testi-author"><div class="testi-av">FO</div><div><div class="testi-name">Fernando O.</div><div class="testi-role">Construtor — Camboriú</div></div></div></div>
+      </div>
+      <div class="carousel-slide">
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Inventário com INSS de obra em aberto. A análise de decadência mostrou que boa parte havia prescrito. Resultado excelente — economizei muito mais do que imaginava.</p><div class="testi-author"><div class="testi-av">PC</div><div><div class="testi-name">Paulo C.</div><div class="testi-role">Espólio familiar — Florianópolis</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Perícia antes de comprar um terreno identificou problemas de fundação que jamais teria visto. Economizei muito mais do que investi na consultoria.</p><div class="testi-author"><div class="testi-av">AL</div><div><div class="testi-name">André L.</div><div class="testi-role">Investidor imobiliário — SC</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Transformamos terreno em condomínio com 4 unidades. A Duarte cuidou de projeto, aprovações, CNO, INSS, habite-se e instituição do condomínio. Processo complexo feito com maestria.</p><div class="testi-author"><div class="testi-av">JR</div><div><div class="testi-name">João R.</div><div class="testi-role">Incorporador — Balneário Camboriú</div></div></div></div>
+      </div>
+    </div>
+    <div class="carousel-controls">
+      <button class="car-btn" onclick="moveCar(-1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <div class="car-dots" id="carDots"><div class="car-dot active" onclick="goSlide(0)"></div><div class="car-dot" onclick="goSlide(1)"></div></div>
+      <button class="car-btn" onclick="moveCar(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIAIS -->
+<section id="diferenciais">
+  <div class="sec-hdr center">
+    <span class="stag">Por que nos escolher</span>
+    <div class="divider"></div>
+    <h2 class="stitle">Nossos <span>diferenciais técnicos</span></h2>
+  </div>
+  <div class="dif-grid">
+    <div class="dif-card"><span class="dif-icon">🏛️</span><h3>Experiência em Regularização</h3><p>Mais de 300 imóveis regularizados com domínio completo dos processos municipais, estaduais e federais.</p></div>
+    <div class="dif-card"><span class="dif-icon">📝</span><h3>Responsabilidade Técnica com ART</h3><p>Todo serviço com Anotação de Responsabilidade Técnica. Proteção jurídica em cada etapa.</p></div>
+    <div class="dif-card"><span class="dif-icon">⚖️</span><h3>Legislação e Normas Técnicas</h3><p>Conhecimento aprofundado de legislação imobiliária, tributária e normas ABNT.</p></div>
+          <div class="dif-card"><span class="dif-icon">🔍</span><h3>Experiência em Perícias Judiciais</h3><p>Perita habilitada com atuação em SC, RS e PR. Laudos reconhecidos por tribunais.</p></div>
+    <div class="dif-card"><span class="dif-icon">💬</span><h3>Comunicação Clara e Transparente</h3><p>Cada etapa explicada de forma simples. Você nunca fica sem saber o que está acontecendo.</p></div>
+    <div class="dif-card"><span class="dif-icon">🎯</span><h3>Foco Total no Resultado</h3><p>Acompanhamos todo o processo do início à entrega. Nossa missão é resolver, não apenas orientar.</p></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-hdr center" style="max-width:680px;margin:0 auto 2.8rem">
+    <span class="stag">Dúvidas Frequentes</span>
+    <div class="divider"></div>
+    <h2 class="stitle">Perguntas que nossos <span>clientes fazem</span></h2>
+  </div>
+  <div class="faq-wrap">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Imóvel sem Habite-se pode ser vendido?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Tecnicamente pode, mas bancos não financiam imóveis sem Habite-se, eliminando a maioria dos compradores. A venda ocorre com grande desconto, risco jurídico para ambas as partes e impossibilidade de registro formal. Regularizar antes protege e valoriza o bem.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva uma regularização de imóvel?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Casos simples de averbação podem ser concluídos em 30 a 60 dias. Regularizações que envolvem aprovação municipal, INSS e cartório podem levar de 3 a 12 meses. Uma análise técnica prévia estima o tempo necessário para cada situação.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">É possível reduzir o INSS de obra?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim, por dois mecanismos: o Fator de Ajuste (FAD), que reduz a base de cálculo, e a decadência tributária, que extingue débitos com mais de cinco anos. Em muitos casos o valor final é substancialmente menor que o débito original.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quando é necessário um laudo técnico?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Em disputas judiciais, inventários, identificação de vícios construtivos, avaliação de danos após sinistros, análise de riscos antes de compra e processos de desapropriação. Deve ser elaborado por engenheiro registrado no CREA com ART.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso regularizar obra antiga feita sem projeto?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. É possível elaborar o projeto "as built" da edificação existente e submetê-lo à aprovação municipal. Dependendo do município e ano da construção, podem existir legislações de regularização simplificada.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O que é o CNO e por que preciso dele?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O CNO é o registro da construção na Receita Federal, obrigatório para obras de engenharia civil. Sem ele, não é possível recolher o INSS de obra nem obter a CND, exigida pelo cartório para averbação e por bancos para financiamento.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Vocês atendem fora de Balneário Camboriú?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Atendemos todo o litoral catarinense — Florianópolis, Itajaí, Camboriú, Itapema, Bombinhas e região. Para serviços fiscais (CNO/INSS/CND) junto à Receita Federal, o atendimento pode ser remoto para todo o Brasil.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qual a diferença entre laudo pericial e parecer técnico?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O laudo pericial é formal e completo, indicado para processos judiciais. O parecer técnico é mais objetivo e ágil, indicado para decisões extrajudiciais, negociações ou análises preliminares.</div></div></div>
+  </div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato">
+  <div class="contato-layout">
+    <div>
+      <span class="stag">Fale com a Engenheira</span>
+      <div class="divider"></div>
+      <h2 class="stitle">Precisa regularizar seu imóvel ou resolver uma <span>questão técnica?</span></h2>
+      <p>Fale diretamente com a Eng.ª Kézia Duarte e receba uma análise preliminar gratuita da sua situação.</p>
+      <div class="contact-items">
+        <div class="contact-item"><span class="ci-icon">📱</span><div><div class="ci-label">WhatsApp</div><div class="ci-val">(54) 99935-8527</div><div class="ci-note">Direto com a engenheira</div></div></div>
+        <div class="contact-item"><span class="ci-icon">✉️</span><div><div class="ci-label">E-mail</div><div class="ci-val">contato@engenhariaduarte.com.br</div></div></div>
+        <div class="contact-item"><span class="ci-icon">📍</span><div><div class="ci-label">Localização</div><div class="ci-val">Balneário Camboriú — SC</div><div class="ci-note">Atendimento em todo o litoral catarinense</div></div></div>
+        <div class="contact-item"><span class="ci-icon">⏱</span><div><div class="ci-label">Resposta</div><div class="ci-val">Em até 24h úteis</div></div></div>
+      </div>
+      <div class="social-row">
+        <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="social-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.instagram.com/eng.keziaduarte" target="_blank" class="social-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          @eng.keziaduarte
+        </a>
+      </div>
+    </div>
+    <div class="contato-form">
+      <div class="form-title">Solicite uma análise técnica</div>
+      <p class="form-sub">Grátis e sem compromisso — respondemos em até 24h úteis</p>
+      <div class="form-row">
+        <div class="form-group"><label>Seu nome</label><input type="text" placeholder="Nome completo"/></div>
+        <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(54) 99999-9999"/></div>
+      </div>
+      <div class="form-group"><label>E-mail</label><input type="email" placeholder="email@exemplo.com"/></div>
+      <div class="form-group"><label>Necessidade</label>
+        <select><option value="" disabled selected>Selecione o serviço</option><option>Regularização de imóvel / Habite-se</option><option>INSS de obra / CNO / CND</option><option>Perícia ou laudo técnico</option><option>Averbação de construção</option><option>Retificação de área</option><option>Bombeiros (AVCB/CLCB)</option><option>Outro</option></select>
+      </div>
+      <div class="form-group"><label>Situação</label><textarea placeholder="Descreva brevemente sua situação..."></textarea></div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="width:100%;justify-content:center;margin-top:.3rem">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        Enviar pelo WhatsApp →
+      </a>
+      <p class="form-privacy">🔒 Seus dados são usados apenas para retorno técnico. Sem spam.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section id="cta-final">
+  <div class="cta-inner">
+    <span class="stag" style="display:block;text-align:center;margin-bottom:.8rem">Entre em Contato</span>
+    <h2>Precisa regularizar seu imóvel ou resolver <span style="color:var(--gold)">pendências técnicas?</span></h2>
+    <p>Entre em contato para uma análise inicial gratuita. Diagnóstico preciso e acompanhamento completo até a regularização.</p>
+    <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold btn-pulse" style="font-size:.92rem;padding:.9rem 2rem">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Falar no WhatsApp
+    </a>
+    <p class="cta-warn">⏱ Resposta em até 24h úteis · Análise preliminar gratuita</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#hero" class="logo" style="display:inline-flex">
+        <div class="logo-svg-wrap">
+          <img src="logo.png" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+        </div>
+        <div class="logo-text"><span class="brand">DUARTE</span><span class="sub">Engenharia</span></div>
+      </a>
+      <p>Regularização de imóveis, perícia em engenharia civil e regularização fiscal de obras. Autoridade técnica para proteger seu patrimônio.</p>
+      <div class="footer-meta">
+        Eng.ª Civil Kézia Duarte<br>
+        CREA-SC 191277-4 | CREA-RS 253921<br>
+        CNPJ 47.185.035/0001-06<br>
+        www.engenhariaduarte.com.br
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" title="WhatsApp">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/eng.keziaduarte" target="_blank" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="#servicos">Regularização Imobiliária</a></li>
+        <li><a href="#servicos">Habite-se e Averbação</a></li>
+        <li><a href="#servicos">INSS de Obra / CND</a></li>
+        <li><a href="#servicos">Perícia e Laudos</a></li>
+        <li><a href="#servicos">Bombeiros (AVCB/CLCB)</a></li>
+        <li><a href="#servicos">Inspeção Predial</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank">WhatsApp: (54) 99935-8527</a></li>
+        <li><a href="mailto:contato@engenhariaduarte.com.br">contato@engenhariaduarte.com.br</a></li>
+        <li><a href="https://www.instagram.com/eng.keziaduarte" target="_blank">@eng.keziaduarte</a></li>
+        <li><a href="#sobre">A Engenheira</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Duarte Engenharia Ltda. Todos os direitos reservados. — Balneário Camboriú, SC, Brasil</p>
+    <p style="color:rgba(201,168,76,.3);font-size:.68rem">CREA-SC 191277-4 · CREA-RS 253921 · Normas ABNT</p>
+  </div>
+</footer>
+
+<!-- WA FLOAT -->
+<a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="wa-float" title="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+</a>
+
+<script>
+// NAV
+window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=window.scrollY>40?'rgba(8,8,8,.98)':'rgba(8,8,8,.93)';});
+function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
+function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+// TABS
+function switchTab(id,el){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  el.classList.add('active');
+}
+
+// FAQ
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
+
+// DIAGNÓSTICO
+let diagCount=0;
+function markDiag(el){
+  const q=el.querySelector('.dq');
+  if(q.textContent==='?'){q.textContent='✗';q.style.color='#e55';diagCount++;}
+  else if(q.textContent==='✗'){q.textContent='✓';q.style.color='#5c5';diagCount--;}
+  else{q.textContent='?';q.style.color='var(--gold)';}
+  document.getElementById('diagResult').classList.toggle('show',diagCount>0);
+}
+
+// CAROUSEL
+let curSlide=0,autoTimer;
+const track=document.getElementById('carTrack');
+const dots=document.querySelectorAll('.car-dot');
+function goSlide(n){
+  curSlide=(n+2)%2;
+  track.style.transform=`translateX(-${curSlide*100}%)`;
+  dots.forEach((d,i)=>d.classList.toggle('active',i===curSlide));
+}
+function moveCar(dir){clearTimeout(autoTimer);goSlide(curSlide+dir);resetAuto();}
+function resetAuto(){autoTimer=setTimeout(()=>{moveCar(1);},5500);}
+resetAuto();
+let tsX=0;
+track.addEventListener('touchstart',e=>tsX=e.touches[0].clientX,{passive:true});
+track.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tsX;if(Math.abs(dx)>40){clearTimeout(autoTimer);moveCar(dx<0?1:-1);resetAuto();}});
+
+// GSAP — só roda se disponível, nunca bloqueia conteúdo
+if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Hero
+  const heroTl=gsap.timeline({delay:.2});
+  heroTl.from('.hero-badge',{y:24,opacity:0,duration:.7,ease:'power3.out'})
+    .from('.hero-title',{y:40,opacity:0,duration:.85,ease:'power3.out'},'-=.4')
+    .from('.hero-sub',{y:25,opacity:0,duration:.7,ease:'power3.out'},'-=.5')
+    .from('.hero-btns',{y:20,opacity:0,duration:.65,ease:'power3.out'},'-=.4')
+    .from('.hero-trust',{y:18,opacity:0,duration:.6,ease:'power3.out'},'-=.35')
+    .from('.hero-stars',{y:14,opacity:0,duration:.55,ease:'power3.out'},'-=.3')
+    .from('.hero-portrait',{x:60,opacity:0,duration:1,ease:'power3.out'},'-=1');
+
+  // Stats counters
+  document.querySelectorAll('.stat-item .num').forEach(el=>{
+    const txt=el.textContent;
+    const num=parseFloat(txt.replace(/[^0-9.]/g,''));
+    if(!num)return;
+    const suffix=txt.replace(/[0-9.,]/g,'');
+    ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
+      gsap.to({v:0},{v:num,duration:1.6,ease:'power2.out',
+        onUpdate:function(){el.textContent=(Number.isInteger(num)?Math.round(this.targets()[0].v):this.targets()[0].v.toFixed(1))+suffix;}
+      });
+    }});
+  });
+
+  // Cards
+  ['prob-card','svc-card','dif-card'].forEach(cls=>{
+    gsap.utils.toArray('.'+cls).forEach((el,i)=>{
+      gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},y:35,opacity:0,duration:.65,delay:(i%3)*.09,ease:'power3.out'});
+    });
+  });
+
+  // Testimonials
+  gsap.utils.toArray('.testi').forEach((el,i)=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 88%'},y:28,opacity:0,duration:.6,delay:(i%3)*.1,ease:'power3.out'});
+  });
+
+  // Section headers
+  gsap.utils.toArray('.sec-hdr').forEach(el=>{
+    gsap.from(el,{scrollTrigger:{trigger:el,start:'top 85%'},y:30,opacity:0,duration:.8,ease:'power3.out'});
+  });
+
+  // About
+  gsap.from('.sobre-img-wrap',{scrollTrigger:{trigger:'#sobre',start:'top 78%'},x:-40,opacity:0,duration:1,ease:'power3.out'});
+  gsap.from('.sobre-content',{scrollTrigger:{trigger:'#sobre',start:'top 78%'},x:40,opacity:0,duration:1,ease:'power3.out'});
+
+  // Diag
+  gsap.from('.diag-layout>div:first-child',{scrollTrigger:{trigger:'#diagnostico',start:'top 80%'},x:-35,opacity:0,duration:.9,ease:'power3.out'});
+  gsap.from('.diag-cta-box',{scrollTrigger:{trigger:'#diagnostico',start:'top 80%'},x:35,opacity:0,duration:.9,ease:'power3.out'});
+
+  // Contact
+  gsap.from('.contato-info',{scrollTrigger:{trigger:'#contato',start:'top 80%'},x:-35,opacity:0,duration:.9,ease:'power3.out'});
+  gsap.from('.contato-form',{scrollTrigger:{trigger:'#contato',start:'top 80%'},x:35,opacity:0,duration:.9,ease:'power3.out'});
+
+  // Timeline draw
+  ScrollTrigger.create({trigger:'#stepsGrid',start:'top 78%',once:true,onEnter:()=>{
+    const fill=document.getElementById('stepsLineFill');
+    if(fill)gsap.to(fill,{width:'calc(80% - 16px)',duration:1.5,ease:'power2.inOut'});
+    gsap.utils.toArray('#stepsGrid .step').forEach((s,i)=>{
+      gsap.from(s,{y:36,opacity:0,duration:.65,delay:i*.15,ease:'power3.out'});
+    });
+  }});
+
+  // CTA
+  gsap.from('.cta-inner',{scrollTrigger:{trigger:'.cta-inner',start:'top 82%'},scale:.96,opacity:0,duration:.9,ease:'power3.out'});
+
+  // Hover glow on non-pulse buttons
+  document.querySelectorAll('.btn-gold:not(.btn-pulse)').forEach(btn=>{
+    btn.addEventListener('mouseenter',()=>gsap.to(btn,{boxShadow:'0 0 26px rgba(201,168,76,.5)',duration:.25}));
+    btn.addEventListener('mouseleave',()=>gsap.to(btn,{boxShadow:'none',duration:.25}));
+  });
+}
+</script>
+</body>
+</html>
