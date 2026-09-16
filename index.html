@@ -59,9 +59,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script><style>
 :root{
   --gold:#C9A84C;--gold-light:#E8C96A;--gold-dark:#8B6914;
   --gold-metal:linear-gradient(135deg,#8B6914 0%,#C9A84C 40%,#E8C96A 60%,#C9A84C 80%,#8B6914 100%);
@@ -82,7 +80,7 @@ a{text-decoration:none;color:inherit}
 .logo-svg-wrap svg{width:100%;height:100%;display:block}
 
 /* ── TEXT JUSTIFY ── */
-p, .hero-sub, .ssub, .prob-card p, .svc-card p, .dif-card p,
+p, .hero-sub, .ssub, .prob-card p, .svc-card p,
 .testi-quote, .sobre-content p, .faq-a-inner, .contato-info p,
 .art-box p, .svc-callout-text p, .step p, .diag-cta-box p,
 .footer-brand p, .footer-meta, .ci-note {
@@ -156,9 +154,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba
   height:100%;max-width:100%;object-fit:cover;object-position:top center;
   display:block;
 }
-/* Edificação estilizada — substitui foto pessoal por linework arquitetônico */
+/* Edificação estilizada — substitui foto pessoal por planta arquitetônica em dourado */
 .hero-building{width:100%;height:100%;position:relative}
-.hero-building canvas{position:absolute;inset:0;width:100%;height:100%;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+.hero-building img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
 .hero-content{position:relative;z-index:2;max-width:620px;padding:100px 5% 60px}
 /* Ambient gold light orbs — flowing light background */
 .hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
@@ -375,25 +373,6 @@ h2.stitle span{color:var(--gold)}
 .car-dot{width:7px;height:7px;border-radius:50%;background:rgba(201,168,76,.22);cursor:pointer;transition:.25s}
 .car-dot.active{background:var(--gold);transform:scale(1.2)}
 
-/* ── DIFERENCIAIS ── */
-#diferenciais{background:var(--black2);position:relative;overflow:hidden}
-.dif-bg{position:absolute;top:0;right:0;width:46%;height:100%;background-image:linear-gradient(90deg,var(--black2) 0%,rgba(10,10,10,.55) 30%,rgba(10,10,10,.15) 60%,rgba(139,105,20,.12) 100%),linear-gradient(180deg,rgba(10,10,10,.75) 0%,rgba(10,10,10,.2) 35%,rgba(10,10,10,.35) 70%,var(--black2) 100%),url('arquitetura-bg.jpg');background-size:cover;background-position:center;filter:grayscale(55%) sepia(18%) saturate(120%) brightness(.6) contrast(1.05);opacity:.55;pointer-events:none;mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 25%,#000 55%);-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.5) 25%,#000 55%)}
-#diferenciais .sec-hdr,#diferenciais .dif-grid{position:relative;z-index:1}
-@media(max-width:900px){.dif-bg{width:100%;opacity:.28}}
-.dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
-.dif-grid .dif-card:first-child{grid-column:span 2;background:linear-gradient(135deg,var(--black3) 0%,#221c08 100%);border-color:rgba(201,168,76,.28)}
-.dif-grid .dif-card:first-child .dif-icon{font-size:2rem}
-.dif-grid .dif-card:first-child h3{font-size:1.15rem}
-@media(max-width:900px){.dif-grid{grid-template-columns:1fr 1fr}.dif-grid .dif-card:first-child{grid-column:span 2}}
-@media(max-width:640px){.dif-grid{grid-template-columns:1fr}.dif-grid .dif-card:first-child{grid-column:span 1}}
-.dif-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
-.dif-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.26),0 16px 32px rgba(0,0,0,.4)}
-.dif-card:hover{border-color:rgba(201,168,76,.26);transform:translateY(-3px)}
-.dif-icon{display:block;margin-bottom:.9rem}
-.dif-icon svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
-.dif-grid .dif-card:first-child .dif-icon svg{width:34px;height:34px}
-.dif-card h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem;color:var(--gold)}
-.dif-card p{font-size:.77rem;color:rgba(255,255,255,.47);line-height:1.6}
 
 /* ── FAQ ── */
 #faq{background:var(--black)}
@@ -499,7 +478,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   .steps-grid{grid-template-columns:1fr}
   .tabs{gap:.2rem;overflow-x:auto;padding-bottom:.5rem;flex-wrap:nowrap}
   .tab{white-space:nowrap;font-size:.68rem;padding:.5rem .75rem;flex-shrink:0}
-  .prob-grid,.svc-grid,.dif-grid{grid-template-columns:1fr}
+  .prob-grid,.svc-grid{grid-template-columns:1fr}
   .carousel-slide{grid-template-columns:1fr}
   .contato-layout,.sobre-layout,.diag-layout{grid-template-columns:1fr}
   .sobre-badge{right:10px;bottom:10px}
@@ -557,7 +536,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="hero-diagonal" aria-hidden="true"><span>CREA-SC · CREA-RS</span></div>
   <div class="hero-portrait-wrap">
     <div class="hero-building" id="heroBuilding" aria-hidden="true">
-      <canvas id="heroBlueprintCanvas"></canvas>
+      <img src="hero-blueprint-gold.jpg" alt="" loading="eager">
     </div>
   </div>
   <div class="hero-content" id="heroContent">
@@ -854,19 +833,19 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="rating-badge">
     <div class="rating-big">4,9</div>
     <div class="rating-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
-    <p class="rating-sub">Avaliação média · +100 clientes</p>
+    <p class="rating-sub">Avaliação média · 27 avaliações no Google</p>
   </div>
   <div class="carousel-wrap">
     <div class="carousel-track" id="carTrack">
       <div class="carousel-slide">
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Tinha apartamento com área divergente da escritura há anos. A Kézia resolveu tudo: retificou a área, averbou a construção e identificou pendência de INSS que eu nem sabia. Processo explicado do início ao fim.</p><div class="testi-author"><div class="testi-av">RS</div><div><div class="testi-name">Roberto S.</div><div class="testi-role">Proprietário — Balneário Camboriú</div></div></div></div>
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Comprei imóvel e descobri vícios ocultos depois. A Engenheira Kézia elaborou o laudo pericial completo aceito no processo judicial. Profissionalismo e domínio técnico impressionantes.</p><div class="testi-author"><div class="testi-av">MC</div><div><div class="testi-name">Maria C.</div><div class="testi-role">Advogada — Itajaí</div></div></div></div>
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Precisávamos do habite-se para fechar o financiamento. A Duarte Engenharia cuidou de tudo com a prefeitura e os bombeiros, entregou no prazo. Comunicação sempre clara. Recomendo sem hesitar.</p><div class="testi-author"><div class="testi-av">FO</div><div><div class="testi-name">Fernando O.</div><div class="testi-role">Construtor — Camboriú</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Estou impressionada com o profissionalismo com que fomos atendidos. Parabéns! Sempre muito atenciosa, ágil, competente e um valor justo pelo esplêndido trabalho prestado. Super indicamos!</p><div class="testi-author"><div class="testi-av">JR</div><div><div class="testi-name">Janaina Rocha</div><div class="testi-role">Avaliação no Google</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Ótima profissional, competente no que faz.</p><div class="testi-author"><div class="testi-av">GK</div><div><div class="testi-name">Glaucia Kraisch</div><div class="testi-role">Avaliação no Google</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Muito bom atendimento e profissionalismo.</p><div class="testi-author"><div class="testi-av">FP</div><div><div class="testi-name">Flavio Pizzuti</div><div class="testi-role">Avaliação no Google</div></div></div></div>
       </div>
       <div class="carousel-slide">
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Inventário com INSS de obra em aberto. A análise de decadência mostrou que boa parte havia prescrito. Resultado excelente — economizei muito mais do que imaginava.</p><div class="testi-author"><div class="testi-av">PC</div><div><div class="testi-name">Paulo C.</div><div class="testi-role">Espólio familiar — Florianópolis</div></div></div></div>
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Perícia antes de comprar um terreno identificou problemas de fundação que jamais teria visto. Economizei muito mais do que investi na consultoria.</p><div class="testi-author"><div class="testi-av">AL</div><div><div class="testi-name">André L.</div><div class="testi-role">Investidor imobiliário — SC</div></div></div></div>
-        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Transformamos terreno em condomínio com 4 unidades. A Duarte cuidou de projeto, aprovações, CNO, INSS, habite-se e instituição do condomínio. Processo complexo feito com maestria.</p><div class="testi-author"><div class="testi-av">JR</div><div><div class="testi-name">João R.</div><div class="testi-role">Incorporador — Balneário Camboriú</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Uma empresa séria e comprometida com os anseios do seu cliente.</p><div class="testi-author"><div class="testi-av">NE</div><div><div class="testi-name">Nova Era Embalagens Ltda</div><div class="testi-role">Avaliação no Google</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Empresa séria e comprometida em entregar serviço de excelência. Recomendo.</p><div class="testi-author"><div class="testi-av">GM</div><div><div class="testi-name">Gláucia Vanessa Muller</div><div class="testi-role">Avaliação no Google</div></div></div></div>
+        <div class="testi"><div class="testi-stars"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div><p class="testi-quote">Excelência nos serviços prestados! Recomendo.</p><div class="testi-author"><div class="testi-av">IY</div><div><div class="testi-name">Icaro Yuri</div><div class="testi-role">Avaliação no Google</div></div></div></div>
       </div>
     </div>
     <div class="carousel-controls">
@@ -874,24 +853,6 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="car-dots" id="carDots"><div class="car-dot active" onclick="goSlide(0)"></div><div class="car-dot" onclick="goSlide(1)"></div></div>
       <button class="car-btn" onclick="moveCar(1)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></button>
     </div>
-  </div>
-</section>
-
-<!-- DIFERENCIAIS -->
-<section id="diferenciais">
-  <div class="dif-bg" aria-hidden="true"></div>
-  <div class="sec-hdr center">
-    <span class="stag">Por que nos escolher</span>
-    <div class="divider"></div>
-    <h2 class="stitle">Nossos <span>diferenciais técnicos</span></h2>
-  </div>
-  <div class="dif-grid">
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/><line x1="15" y1="21" x2="15" y2="9"/><line x1="19" y1="21" x2="19" y2="9"/><path d="M3 9l9-6 9 6"/></svg></span><h3>Experiência em Regularização</h3><p>Mais de 300 imóveis regularizados com domínio completo dos processos municipais, estaduais e federais.</p></div>
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Responsabilidade Técnica com ART</h3><p>Todo serviço com Anotação de Responsabilidade Técnica. Proteção jurídica em cada etapa.</p></div>
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><path d="M12 6l-5 9h10z"/><path d="M12 6l5 9h-10z"/><circle cx="4.5" cy="12" r="1.6"/><circle cx="19.5" cy="12" r="1.6"/></svg></span><h3>Legislação e Normas Técnicas</h3><p>Conhecimento aprofundado de legislação imobiliária, tributária e normas ABNT.</p></div>
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg></span><h3>Experiência em Perícias Judiciais</h3><p>Perita habilitada com atuação em SC, RS e PR. Laudos reconhecidos por tribunais.</p></div>
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12" x2="13" y2="12"/></svg></span><h3>Comunicação Clara e Transparente</h3><p>Cada etapa explicada de forma simples. Você nunca fica sem saber o que está acontecendo.</p></div>
-    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.3"/><circle cx="12" cy="12" r=".8" fill="var(--gold)" stroke="none"/></svg></span><h3>Foco Total no Resultado</h3><p>Acompanhamos todo o processo do início à entrega. Nossa missão é resolver, não apenas orientar.</p></div>
   </div>
 </section>
 
@@ -1042,123 +1003,6 @@ window.addEventListener('scroll',()=>{document.getElementById('navbar').style.ba
 function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
 function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
 
-// Planta arquitetônica 3D em dourado — substitui a foto/ilustração estática da hero
-// Adaptado de referência enviada pela cliente (malha estrutural em wireframe dourado)
-(function(){
-  const holder=document.getElementById('heroBuilding');
-  const canvas=document.getElementById('heroBlueprintCanvas');
-  if(!holder||!canvas||typeof THREE==='undefined')return;
-  if(window.innerWidth<=768)return; // elemento fica oculto no mobile — não inicializa WebGL à toa
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-
-  let scene,camera,renderer,buildingGroup;
-  let isAutoRotating=true;
-
-  function initHeroBlueprint(){
-    scene=new THREE.Scene();
-
-    const w=holder.clientWidth||600,h=holder.clientHeight||700;
-    camera=new THREE.PerspectiveCamera(42,w/h,0.1,1000);
-    setHeroBPCameraDistance(w/h);
-    camera.lookAt(0,5,0);
-
-    renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
-    renderer.setSize(w,h);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
-
-    buildingGroup=new THREE.Group();
-    scene.add(buildingGroup);
-    buildingGroup.rotation.y=-0.5;
-
-    buildGoldWireframe();
-    window.addEventListener('resize',onHeroBPResize);
-    requestAnimationFrame(animateHeroBP);
-  }
-
-  function buildGoldWireframe(){
-    const goldPrimary=new THREE.LineBasicMaterial({color:0xC9A84C,transparent:true,opacity:.85});
-    const goldBright=new THREE.LineBasicMaterial({color:0xE8C96A,transparent:true,opacity:1});
-    const goldSubtle=new THREE.LineBasicMaterial({color:0x8B6914,transparent:true,opacity:.5});
-
-    const grid=new THREE.GridHelper(60,30,0xC9A84C,0x2a2410);
-    grid.material.transparent=true;grid.material.opacity=.18;
-    buildingGroup.add(grid);
-
-    function addBox(w,h,d,x,y,z,mat){
-      const geo=new THREE.BoxGeometry(w,h,d);
-      const edges=new THREE.EdgesGeometry(geo);
-      const line=new THREE.LineSegments(edges,mat);
-      line.position.set(x,y,z);
-      buildingGroup.add(line);
-      return line;
-    }
-
-    // Laje térrea e terraço
-    addBox(28,0.4,18,0,0.2,0,goldPrimary);
-    addBox(12,0.2,14,12,0.1,4,goldSubtle);
-
-    // Volume térreo (caixa envidraçada)
-    addBox(20,4.5,12,-2,2.65,-1,goldPrimary);
-
-    // Pilares estruturais
-    [[-11,2.65,-6],[-11,2.65,4],[7,2.65,-6],[7,2.65,4],[-2,2.65,-6],[-2,2.65,4],[3,2.65,-6],[3,2.65,4]]
-      .forEach(p=>addBox(0.5,4.5,0.5,p[0],p[1],p[2],goldBright));
-
-    // Volume superior em balanço
-    addBox(22,5.0,15,3,7.4,1,goldBright);
-    addBox(25,0.5,17,3,10.15,1,goldPrimary);
-    addBox(22,0.3,15,3,4.9,1,goldPrimary);
-
-    // Mullions da fachada
-    for(let x=-11;x<=7;x+=2.2){
-      const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,0.4,5.01),new THREE.Vector3(x,4.9,5.01)]);
-      buildingGroup.add(new THREE.Line(g,goldSubtle));
-    }
-    for(let x=-7;x<=13;x+=2.5){
-      const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(x,4.9,8.51),new THREE.Vector3(x,9.9,8.51)]);
-      buildingGroup.add(new THREE.Line(g,goldSubtle));
-    }
-
-    // Escada em balanço
-    const stairSteps=14,stairWidth=3.5;
-    for(let i=0;i<stairSteps;i++){
-      const stepY=0.4+(i*(4.5/stairSteps)),stepX=-6+(i*0.45);
-      addBox(0.8,0.1,stairWidth,stepX,stepY,0,goldBright);
-    }
-
-    // Nós estruturais (pontos de brilho)
-    const nodeGeo=new THREE.SphereGeometry(0.22,8,8);
-    const nodeMat=new THREE.MeshBasicMaterial({color:0xE8C96A});
-    [[-11,4.9,5],[7,4.9,5],[-11,4.9,-7],[7,4.9,-7],[14,9.9,8.5],[-8,9.9,8.5],[14,9.9,-6.5],[-8,9.9,-6.5]]
-      .forEach(p=>{const n=new THREE.Mesh(nodeGeo,nodeMat);n.position.set(p[0],p[1],p[2]);buildingGroup.add(n);});
-  }
-
-  function setHeroBPCameraDistance(aspect){
-    // Contêiner da hero é estreito/vertical — afasta a câmera proporcionalmente
-    // para a edificação inteira caber no campo de visão horizontal disponível.
-    const scale=aspect<1?(1/aspect)*0.78:1;
-    camera.position.set(42*scale,24*scale,52*scale);
-  }
-
-  function onHeroBPResize(){
-    const w=holder.clientWidth||600,h=holder.clientHeight||700;
-    camera.aspect=w/h;
-    setHeroBPCameraDistance(w/h);
-    camera.lookAt(0,5,0);
-    camera.updateProjectionMatrix();
-    renderer.setSize(w,h);
-  }
-
-  function animateHeroBP(){
-    requestAnimationFrame(animateHeroBP);
-    if(isAutoRotating)buildingGroup.rotation.y+=0.0022;
-    renderer.render(scene,camera);
-  }
-
-  if(document.readyState==='complete')initHeroBlueprint();
-  else window.addEventListener('load',initHeroBlueprint);
-})();
-
 // Kicker rotativo do hero — "Engenharia que resiste à perícia / à fiscalização / ao tribunal / ao tempo"
 (function(){
   const wrap=document.getElementById('kickerRotate');
@@ -1248,7 +1092,7 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
   });
 
   // Cards
-  ['prob-card','svc-card','dif-card'].forEach(cls=>{
+  ['prob-card','svc-card'].forEach(cls=>{
     gsap.utils.toArray('.'+cls).forEach((el,i)=>{
       gsap.from(el,{scrollTrigger:{trigger:el,start:'top 90%'},y:35,opacity:0,duration:.65,delay:(i%3)*.09,ease:'power3.out'});
     });
