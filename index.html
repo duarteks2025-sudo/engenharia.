@@ -86,6 +86,10 @@ p, .hero-sub, .ssub, .prob-card p, .svc-card p, .dif-card p,
   text-justify: inter-word;
 }
 
+/* Film-grain sutil — textura física, assinatura "editorial luxury" */
+.grain-overlay{position:fixed;inset:0;z-index:9500;pointer-events:none;opacity:.035;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>")}
+@media(max-width:640px){.grain-overlay{display:none}}
+
 /* ── NAV ── */
 nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba(8,8,8,.93);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,168,76,.13)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
@@ -164,6 +168,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba
 .hero-portrait-placeholder p{font-size:.75rem;color:rgba(201,168,76,.5);text-align:center;line-height:1.5;max-width:200px}
 .hero-portrait-placeholder .ph-label{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.5px}
 .hero-content{position:relative;z-index:2;max-width:620px;padding:100px 5% 60px}
+/* Ambient gold light orbs — flowing light background */
+.hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
+.hero-glow span{position:absolute;border-radius:50%;filter:blur(60px);opacity:.35;background:radial-gradient(circle,rgba(232,201,122,.9),rgba(201,168,76,0) 70%);animation:glowFloat 14s ease-in-out infinite}
+.hero-glow span:nth-child(1){width:280px;height:280px;top:10%;right:20%;animation-delay:0s}
+.hero-glow span:nth-child(2){width:180px;height:180px;top:55%;right:8%;animation-delay:-4s;opacity:.25}
+.hero-glow span:nth-child(3){width:220px;height:220px;top:75%;right:35%;animation-delay:-8s;opacity:.2}
+@keyframes glowFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,25px) scale(1.15)}}
+@media(prefers-reduced-motion:reduce){.hero-glow span{animation:none}}
+@media(max-width:900px){.hero-glow{display:none}}
 @keyframes heroZoom{0%{transform:scale(1)}100%{transform:scale(1.07)}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(201,168,76,.4);padding:.36rem .9rem;border-radius:30px;font-size:.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:1.6rem;background:rgba(201,168,76,.05)}
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
@@ -178,6 +191,10 @@ h1.hero-title span{color:var(--gold)}
 .btn-outline{display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid rgba(201,168,76,.55);color:var(--gold);padding:.85rem 1.7rem;border-radius:50px;font-weight:600;font-size:.84rem;background:rgba(201,168,76,.04);transition:transform .5s var(--ease),background .35s,border-color .35s;cursor:pointer;white-space:nowrap}
 .btn-outline:hover{background:rgba(201,168,76,.12);border-color:var(--gold);transform:translateY(-3px) scale(1.015)}
 .btn-outline:active{transform:translateY(-1px) scale(.98)}
+/* Button-in-button: seta nasce dentro de um círculo próprio, com tensão cinética no hover */
+.btn-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(0,0,0,.14);flex-shrink:0;transition:transform .5s var(--ease),background .35s}
+.btn-outline .btn-arrow{background:rgba(201,168,76,.14)}
+.btn-gold:hover .btn-arrow,.btn-outline:hover .btn-arrow{transform:translate(3px,-1px) scale(1.08)}
 .hero-trust{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.6rem}
 .trust-pill{display:flex;align-items:center;gap:.4rem;font-size:.73rem;color:rgba(255,255,255,.5)}
 .trust-pill svg{width:12px;height:12px;color:var(--gold);flex-shrink:0}
@@ -241,9 +258,9 @@ h2.stitle span{color:var(--gold)}
 /* ── PROBLEMAS ── */
 #problemas{background:var(--black2)}
 .prob-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
-.prob-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.12);border-radius:16px;padding:1.7rem;transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+.prob-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.12);border-radius:16px;padding:1.7rem;transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;position:relative;overflow:hidden;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
 .prob-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(var(--gold-light),var(--gold));transition:.4s}
-.prob-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 20px 44px rgba(0,0,0,.45)}
+.prob-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.28),0 20px 44px rgba(0,0,0,.45)}
 .prob-card:hover::before{height:100%}
 .prob-emoji{font-size:1.4rem;margin-bottom:.8rem;display:block}
 .prob-card h3{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:.4rem}
@@ -272,8 +289,8 @@ h2.stitle span{color:var(--gold)}
 .tab:hover{color:var(--gold)}.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
 .tab-panel{display:none}.tab-panel.active{display:block}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
-.svc-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.8rem;transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
-.svc-card:hover{border-color:rgba(201,168,76,.32);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 20px 44px rgba(0,0,0,.45)}
+.svc-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.8rem;transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
+.svc-card:hover{border-color:rgba(201,168,76,.32);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.28),0 20px 44px rgba(0,0,0,.45)}
 .svc-num{font-family:'Playfair Display',serif;font-size:2.6rem;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,.35);font-weight:800;line-height:1;margin-bottom:.6rem;letter-spacing:-1px}
 @supports not (-webkit-text-stroke:1px rgba(201,168,76,.35)){.svc-num{color:rgba(201,168,76,.25);-webkit-text-stroke:0}}
 .svc-card h3{font-family:'Playfair Display',serif;font-size:.97rem;margin-bottom:.45rem}
@@ -289,9 +306,20 @@ h2.stitle span{color:var(--gold)}
 /* ── SOBRE ── */
 #sobre{background:var(--black)}
 .sobre-layout{display:grid;grid-template-columns:1fr 1.1fr;gap:4.5rem;align-items:center}
-.sobre-img-wrap{position:relative}
-.sobre-img-wrap img{width:100%;border-radius:12px;display:block}
+/* Double-Bezel — moldura aninhada tipo hardware de precisão (vidro sobre bandeja de metal) */
+.sobre-img-shell{position:relative;background:linear-gradient(155deg,rgba(201,168,76,.14),rgba(201,168,76,.02));border:1px solid rgba(201,168,76,.22);border-radius:26px;padding:.6rem}
+.sobre-img-wrap{position:relative;border-radius:20px;overflow:hidden;box-shadow:inset 0 1px 1px rgba(255,255,255,.12),inset 0 -1px 12px rgba(0,0,0,.5)}
+.sobre-img-wrap img{width:100%;border-radius:20px;display:block;filter:grayscale(.15) contrast(1.05)}
 .sobre-img-frame{position:absolute;top:-16px;left:-16px;right:16px;bottom:16px;border:1.5px solid rgba(201,168,76,.2);border-radius:14px;pointer-events:none}
+/* Blueprint technical overlay — corner markers + grid, engineering motif */
+.sobre-blueprint{position:absolute;inset:0;border-radius:12px;pointer-events:none;overflow:hidden}
+.sobre-blueprint::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.12) 1px,transparent 1px);background-size:28px 28px;mix-blend-mode:screen;opacity:.5}
+.bp-corner{position:absolute;width:22px;height:22px;border-color:var(--gold);opacity:.75}
+.bp-corner.tl{top:10px;left:10px;border-top:2px solid;border-left:2px solid}
+.bp-corner.tr{top:10px;right:10px;border-top:2px solid;border-right:2px solid}
+.bp-corner.bl{bottom:10px;left:10px;border-bottom:2px solid;border-left:2px solid}
+.bp-corner.br{bottom:10px;right:10px;border-bottom:2px solid;border-right:2px solid}
+.bp-tag{position:absolute;top:22px;left:22px;font-size:.6rem;letter-spacing:2px;color:var(--gold);background:rgba(8,8,8,.55);border:1px solid rgba(201,168,76,.4);border-radius:4px;padding:.25rem .55rem;text-transform:uppercase}
 .sobre-badge{position:absolute;bottom:20px;right:-16px;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);border-radius:10px;padding:.85rem 1.1rem;text-align:center;box-shadow:0 8px 26px rgba(0,0,0,.4)}
 .sobre-badge .bnum{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:800;line-height:1}
 .sobre-badge .blab{font-size:.62rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;opacity:.85}
@@ -309,7 +337,8 @@ h2.stitle span{color:var(--gold)}
 .steps-line-bg{position:absolute;top:36px;left:calc(10% + 8px);right:calc(10% + 8px);height:1px;background:rgba(201,168,76,.12);z-index:0}
 .steps-line-fill{position:absolute;top:36px;left:calc(10% + 8px);height:1px;width:0;background:linear-gradient(90deg,var(--gold),rgba(201,168,76,.35));z-index:0;transition:width 1.5s ease}
 .steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;position:relative;z-index:1}
-.step{text-align:center}
+.step{text-align:center;transition:transform .5s var(--ease)}
+@media(min-width:961px){.step:nth-child(even){transform:translateY(26px)}}
 .step-n{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;box-shadow:0 0 0 7px rgba(201,168,76,.08)}
 .step h3{font-family:'Playfair Display',serif;font-size:.87rem;margin-bottom:.4rem}
 .step p{font-size:.74rem;color:var(--muted);line-height:1.55}
@@ -324,7 +353,7 @@ h2.stitle span{color:var(--gold)}
 .carousel-wrap{position:relative;overflow:hidden}
 .carousel-track{display:flex}
 .carousel-slide{min-width:100%;display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.2rem}
-.testi{background:linear-gradient(180deg,var(--black2),#161616);border:1px solid rgba(201,168,76,.12);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
+.testi{background:linear-gradient(180deg,var(--black2),#161616);border:1px solid rgba(201,168,76,.12);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease);box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black),0 0 0 7px rgba(201,168,76,.1)}
 .testi:hover{transform:translateY(-4px);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 32px rgba(0,0,0,.4)}
 .testi:hover{border-color:rgba(201,168,76,.28);transform:translateY(-3px)}
 .testi-stars{display:flex;gap:2px;margin-bottom:.8rem}
@@ -343,9 +372,14 @@ h2.stitle span{color:var(--gold)}
 
 /* ── DIFERENCIAIS ── */
 #diferenciais{background:var(--black2)}
-.dif-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.3rem}
-.dif-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset}
-.dif-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 16px 32px rgba(0,0,0,.4)}
+.dif-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem}
+.dif-grid .dif-card:first-child{grid-column:span 2;background:linear-gradient(135deg,var(--black3) 0%,#221c08 100%);border-color:rgba(201,168,76,.28)}
+.dif-grid .dif-card:first-child .dif-icon{font-size:2rem}
+.dif-grid .dif-card:first-child h3{font-size:1.15rem}
+@media(max-width:900px){.dif-grid{grid-template-columns:1fr 1fr}.dif-grid .dif-card:first-child{grid-column:span 2}}
+@media(max-width:640px){.dif-grid{grid-template-columns:1fr}.dif-grid .dif-card:first-child{grid-column:span 1}}
+.dif-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
+.dif-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.26),0 16px 32px rgba(0,0,0,.4)}
 .dif-card:hover{border-color:rgba(201,168,76,.26);transform:translateY(-3px)}
 .dif-icon{font-size:1.4rem;margin-bottom:.8rem;display:block}
 .dif-card h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem}
@@ -469,6 +503,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 </style>
 </head>
 <body>
+<div class="grain-overlay" aria-hidden="true"></div>
 
 <!-- NAV -->
 <nav id="navbar">
@@ -508,6 +543,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
+  <div class="hero-glow" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="hero-diagonal" aria-hidden="true"><span>CREA-SC · CREA-RS</span></div>
   <div class="hero-portrait-wrap">
     <img src="kezia-hero.png" alt="Eng.ª Kézia Duarte" class="hero-portrait">
@@ -707,6 +743,14 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">07</div><h3>Due Diligence Técnica na Compra</h3><p>Análise completa antes da aquisição, identificando riscos e estimando custos de regularização.</p></div>
       <div class="svc-card"><div class="svc-num">08</div><h3>Vistoria de Entrada, Saída e Entrega de Chaves</h3><p>Vistoria técnica de imóveis para locação, compra ou entrega de obra, com registro fotográfico e laudo detalhado.</p></div>
     </div>
+    <div class="svc-callout">
+      <div class="svc-callout-text">
+        <h3>Laudo com validade jurídica</h3>
+        <p>Atendemos advogados, imobiliárias, construtoras e partes em processos nos tribunais de <strong style="color:var(--gold)">SC, RS e PR</strong>. Fundamentação técnica em normas ABNT, com imparcialidade e responsabilidade de CREA.</p>
+        <div class="callout-pills"><span class="cpill">✦ Aceito em processos judiciais</span><span class="cpill">✦ Fundamentação ABNT/NBR 14.653</span><span class="cpill">✦ Disponibilidade para audiência</span></div>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Solicitar laudo pericial</a>
+    </div>
   </div>
   <div class="tab-panel" id="tab-bomb">
     <div class="svc-grid">
@@ -716,18 +760,31 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">04</div><h3>Renovação de Certificados CBMSC</h3><p>Gestão e renovação periódica de AVCB e CLCB, garantindo conformidade contínua.</p></div>
       <div class="svc-card"><div class="svc-num">05</div><h3>Vistoria e Regularização CBMSC</h3><p>Acompanhamento completo do processo de vistoria até a emissão do certificado.</p></div>
     </div>
+    <div class="svc-callout alert-pulse">
+      <div class="svc-callout-text">
+        <h3>⚠ Alvará pode ser cassado sem AVCB</h3>
+        <p>Estabelecimentos com <strong style="color:var(--gold)">AVCB/CLCB vencido</strong> ficam sujeitos à interdição e à suspensão do alvará de funcionamento. Verificamos a situação da sua edificação e conduzimos toda a renovação junto ao CBMSC.</p>
+      </div>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Verificar meu AVCB</a>
+    </div>
   </div>
 </section>
 
 <!-- SOBRE -->
 <section id="sobre">
   <div class="sobre-layout">
-    <div class="sobre-img-wrap">
-      <img src="kezia-portrait.png" alt="Eng.ª Kézia Duarte" style="width:100%;border-radius:12px;display:block">
+    <div class="sobre-img-shell">
+      <div class="sobre-img-wrap">
+        <img src="kezia-portrait.png" alt="Eng.ª Kézia Duarte">
+        <div class="sobre-blueprint" aria-hidden="true">
+          <span class="bp-corner tl"></span><span class="bp-corner tr"></span><span class="bp-corner bl"></span><span class="bp-corner br"></span>
+          <span class="bp-tag">CREA-SC 191277-4</span>
+        </div>
+      </div>
       <div class="sobre-img-frame"></div>
       <div class="sobre-badge"><div class="bnum">300+</div><div class="blab">Imóveis<br>Regularizados</div></div>
     </div>
-    <div>
+    <div class="sobre-content">
       <span class="stag">A Engenheira Responsável</span>
       <div class="divider"></div>
       <h2 class="stitle">Eng.ª Civil <span>Kézia Duarte</span></h2>
@@ -846,7 +903,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 <!-- CONTATO -->
 <section id="contato">
   <div class="contato-layout">
-    <div>
+    <div class="contato-info">
       <span class="stag">Fale com a Engenheira</span>
       <div class="divider"></div>
       <h2 class="stitle">Precisa regularizar seu imóvel ou resolver uma <span>questão técnica?</span></h2>
@@ -1103,6 +1160,15 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
 
   // CTA
   gsap.from('.cta-inner',{scrollTrigger:{trigger:'.cta-inner',start:'top 82%'},scale:.96,opacity:0,duration:.9,ease:'power3.out'});
+
+  // Button-in-button: transforma a seta final de cada CTA em um ícone circular aninhado
+  document.querySelectorAll('.btn-gold, .btn-outline').forEach(btn=>{
+    const txt = btn.textContent.trim();
+    if(txt.endsWith('→') && !btn.querySelector('.btn-arrow')){
+      const label = txt.slice(0,-1).trim();
+      btn.innerHTML = '<span>'+label+'</span><span class="btn-arrow">→</span>';
+    }
+  });
 
   // Hover glow on non-pulse buttons
   document.querySelectorAll('.btn-gold:not(.btn-pulse)').forEach(btn=>{
