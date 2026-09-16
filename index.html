@@ -62,7 +62,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
 <style>
 :root{
-  --gold:#C9A84C;--gold-light:#E8C97A;--gold-dark:#A07B2A;
+  --gold:#C9A84C;--gold-light:#E8C96A;--gold-dark:#8B6914;
+  --gold-metal:linear-gradient(135deg,#8B6914 0%,#C9A84C 40%,#E8C96A 60%,#C9A84C 80%,#8B6914 100%);
+  /* Metal polido — múltiplas faixas de luz, tipo ouro escovado */
+  --gold-brushed:linear-gradient(100deg,#5c4009 0%,#8B6914 12%,#C9A84C 24%,#F2DFA0 34%,#C9A84C 44%,#8B6914 54%,#C9A84C 66%,#F2DFA0 76%,#C9A84C 86%,#8B6914 96%,#5c4009 100%);
   --black:#080808;--black2:#111;--black3:#1a1a1a;
   --white:#fff;--muted:rgba(255,255,255,.55);
   --ease:cubic-bezier(.19,1,.22,1);
@@ -99,8 +102,8 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba
 .nav-links{display:flex;gap:1.6rem;list-style:none}
 .nav-links a{color:rgba(255,255,255,.7);font-size:.76rem;letter-spacing:.5px;font-weight:500;transition:.2s;text-transform:uppercase}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:var(--black);padding:.5rem 1.2rem;border-radius:30px;font-size:.74rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:transform .4s var(--ease),background .3s;white-space:nowrap}
-.nav-cta:hover{background:var(--gold-light);transform:translateY(-2px)}
+.nav-cta{background:var(--gold-brushed);background-size:260% 100%;background-position:30% 0;color:#1a1204;padding:.5rem 1.2rem;border-radius:30px;font-size:.74rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;transition:transform .4s var(--ease),background-position .7s var(--ease);white-space:nowrap;box-shadow:0 1px 0 rgba(255,255,255,.45) inset}
+.nav-cta:hover{background-position:70% 0;transform:translateY(-2px)}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px}
 .hamburger span{width:23px;height:2px;background:var(--gold);border-radius:2px}
 .mob-menu{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(8,8,8,.98);padding:2rem 5%;border-bottom:1px solid rgba(201,168,76,.18);z-index:998}
@@ -152,21 +155,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba
   height:100%;max-width:100%;object-fit:cover;object-position:top center;
   display:block;
 }
-.hero-portrait-placeholder{
-  width:100%;height:100%;
-  background:linear-gradient(170deg,#0d0d0d 0%,#1a1205 40%,#2a1e00 100%);
-  display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
-  padding-bottom:3rem;gap:.5rem;
-}
-.hero-portrait-placeholder .ph-icon{
-  width:120px;height:120px;border-radius:50%;
-  background:linear-gradient(135deg,rgba(201,168,76,.2),rgba(201,168,76,.05));
-  border:2px solid rgba(201,168,76,.3);
-  display:flex;align-items:center;justify-content:center;
-  margin-bottom:.5rem;
-}
-.hero-portrait-placeholder p{font-size:.75rem;color:rgba(201,168,76,.5);text-align:center;line-height:1.5;max-width:200px}
-.hero-portrait-placeholder .ph-label{font-size:.65rem;color:rgba(255,255,255,.25);letter-spacing:.5px}
+/* Edificação estilizada — substitui foto pessoal por linework arquitetônico */
+.hero-building{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;padding-bottom:2vh}
+.hero-building svg{width:min(78%,420px);height:auto;filter:drop-shadow(0 30px 60px rgba(0,0,0,.5))}
+.hero-building .hb-face{fill:rgba(201,168,76,.05);stroke:var(--gold);stroke-width:1.3}
+.hero-building .hb-grid line{stroke:rgba(201,168,76,.28);stroke-width:1}
+.hero-building .hb-win{fill:rgba(139,105,20,.5)}
+.hero-building .hb-ground{stroke:rgba(201,168,76,.4);stroke-width:1.3}
+@media(max-width:900px){.hero-building svg{width:min(70%,320px)}}
 .hero-content{position:relative;z-index:2;max-width:620px;padding:100px 5% 60px}
 /* Ambient gold light orbs — flowing light background */
 .hero-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden}
@@ -182,12 +178,19 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:0 5%;background:rgba
 .hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.5)}}
 h1.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.1rem,4.6vw,3.6rem);font-weight:800;line-height:1.1;letter-spacing:-.5px;margin-bottom:1.2rem}
-h1.hero-title span{color:var(--gold)}
+h1.hero-title span,h2.stitle span,.stat-item .num{
+  background:var(--gold-brushed);background-size:260% 100%;background-position:30% 0;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:var(--gold);
+}
 .hero-sub{font-size:.96rem;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:2rem}
+.hero-sub strong{color:var(--gold);font-weight:700}
 .hero-btns{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:2.4rem}
-.btn-gold{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);padding:.85rem 1.7rem;border-radius:50px;font-weight:700;font-size:.84rem;letter-spacing:.3px;transition:transform .5s var(--ease),box-shadow .5s var(--ease),background .3s;border:none;cursor:pointer;white-space:nowrap;box-shadow:0 1px 0 rgba(255,255,255,.25) inset,0 10px 24px rgba(0,0,0,.25)}
-.btn-gold:hover{background:linear-gradient(135deg,var(--gold-light),var(--gold));transform:translateY(-3px) scale(1.015);box-shadow:0 1px 0 rgba(255,255,255,.3) inset,0 14px 34px rgba(201,168,76,.4)}
+.btn-gold{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:.6rem;background:var(--gold-brushed);background-size:260% 260%;background-position:20% 50%;color:#1a1204;padding:.85rem 1.7rem;border-radius:50px;font-weight:700;font-size:.84rem;letter-spacing:.3px;transition:transform .5s var(--ease),box-shadow .5s var(--ease),background-position .9s var(--ease);border:none;cursor:pointer;white-space:nowrap;box-shadow:0 1.5px 0 rgba(255,255,255,.5) inset,0 -1.5px 3px rgba(0,0,0,.35) inset,0 10px 26px rgba(0,0,0,.4)}
+.btn-gold::after{content:'';position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.55) 46%,rgba(255,255,255,.05) 54%,transparent 68%);background-size:220% 100%;background-position:120% 0;transition:background-position .8s var(--ease);pointer-events:none}
+.btn-gold:hover{background-position:80% 50%;transform:translateY(-3px) scale(1.015);box-shadow:0 1.5px 0 rgba(255,255,255,.6) inset,0 -1.5px 3px rgba(0,0,0,.4) inset,0 16px 36px rgba(139,105,20,.5)}
+.btn-gold:hover::after{background-position:-20% 0}
 .btn-gold:active{transform:translateY(-1px) scale(.98)}
+.btn-gold span,.btn-gold svg{position:relative;z-index:1}
 .btn-outline{display:inline-flex;align-items:center;gap:.6rem;border:1.5px solid rgba(201,168,76,.55);color:var(--gold);padding:.85rem 1.7rem;border-radius:50px;font-weight:600;font-size:.84rem;background:rgba(201,168,76,.04);transition:transform .5s var(--ease),background .35s,border-color .35s;cursor:pointer;white-space:nowrap}
 .btn-outline:hover{background:rgba(201,168,76,.12);border-color:var(--gold);transform:translateY(-3px) scale(1.015)}
 .btn-outline:active{transform:translateY(-1px) scale(.98)}
@@ -205,17 +208,10 @@ h1.hero-title span{color:var(--gold)}
 /* Kicker rotativo — frase que se transforma */
 .hero-kicker{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;font-family:'Playfair Display',serif;font-size:clamp(.95rem,1.6vw,1.15rem);font-style:italic;color:rgba(255,255,255,.6);margin-bottom:.9rem}
 .hero-kicker b{font-weight:600;color:rgba(255,255,255,.6);font-style:normal}
-.kicker-rotate{position:relative;display:inline-block;color:var(--gold);min-width:7.5ch;height:1.4em;overflow:hidden;vertical-align:bottom}
+.kicker-rotate{position:relative;display:inline-block;color:var(--gold);height:1.4em;overflow:hidden;vertical-align:bottom;transition:width .4s var(--ease)}
 .kicker-rotate span{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;transform:translateY(60%);transition:opacity .5s ease,transform .5s ease}
 .kicker-rotate span.active{opacity:1;transform:translateY(0)}
 @media(prefers-reduced-motion:reduce){.kicker-rotate span{transition:none}}
-
-/* Traçado técnico das três torres — SVG animado */
-.tower-sketch{position:absolute;right:37%;bottom:10%;width:min(200px,19vw);opacity:.5;z-index:1;pointer-events:none}
-.tower-sketch svg{width:100%;height:auto;overflow:visible}
-.tower-sketch path{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
-.tower-sketch .ts-fill{fill:var(--gold);fill-opacity:.06;stroke:none}
-.tower-sketch .ts-dot{fill:var(--gold)}
 
 /* Cartão de credenciais — quebra a borda entre texto e foto */
 .credentials-card{position:relative;z-index:3;background:rgba(10,10,10,.82);backdrop-filter:blur(6px);border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:1.1rem 1.4rem;display:grid;grid-template-columns:repeat(2,auto);gap:.7rem 1.8rem;max-width:420px;margin-top:.4rem;margin-bottom:2rem}
@@ -224,9 +220,6 @@ h1.hero-title span{color:var(--gold)}
 .credentials-card .cred-item strong{color:var(--white);font-weight:600}
 @media(min-width:901px){
   .credentials-card{position:absolute;left:500px;bottom:16%;margin:0}
-}
-@media(max-width:900px){
-  .tower-sketch{display:none}
 }
 
 /* Faixa de normas técnicas — marquee */
@@ -262,8 +255,9 @@ h2.stitle span{color:var(--gold)}
 .prob-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:linear-gradient(var(--gold-light),var(--gold));transition:.4s}
 .prob-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.28),0 20px 44px rgba(0,0,0,.45)}
 .prob-card:hover::before{height:100%}
-.prob-emoji{font-size:1.4rem;margin-bottom:.8rem;display:block}
-.prob-card h3{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:.4rem}
+.prob-emoji{display:block;margin-bottom:.9rem}
+.prob-emoji svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.prob-card h3{font-family:'Playfair Display',serif;font-size:.95rem;margin-bottom:.4rem;color:var(--gold)}
 .prob-card p{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.6}
 
 /* ── DIAGNÓSTICO ── */
@@ -291,9 +285,11 @@ h2.stitle span{color:var(--gold)}
 .svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.3rem}
 .svc-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.8rem;transition:transform .55s var(--ease),box-shadow .55s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
 .svc-card:hover{border-color:rgba(201,168,76,.32);transform:translateY(-6px);box-shadow:0 1px 0 rgba(255,255,255,.06) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.28),0 20px 44px rgba(0,0,0,.45)}
-.svc-num{font-family:'Playfair Display',serif;font-size:2.6rem;color:transparent;-webkit-text-stroke:1px rgba(201,168,76,.35);font-weight:800;line-height:1;margin-bottom:.6rem;letter-spacing:-1px}
-@supports not (-webkit-text-stroke:1px rgba(201,168,76,.35)){.svc-num{color:rgba(201,168,76,.25);-webkit-text-stroke:0}}
-.svc-card h3{font-family:'Playfair Display',serif;font-size:.97rem;margin-bottom:.45rem}
+.svc-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:.6rem;letter-spacing:-1px;
+  background:var(--gold-brushed);background-size:260% 100%;background-position:30% 0;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:rgba(201,168,76,.5);
+  -webkit-text-stroke:1px rgba(201,168,76,.5);opacity:.85}
+.svc-card h3{font-family:'Playfair Display',serif;font-size:.97rem;margin-bottom:.45rem;color:var(--gold)}
 .svc-card p{font-size:.77rem;color:rgba(255,255,255,.47);line-height:1.6}
 .svc-callout{background:rgba(201,168,76,.06);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:1.8rem;margin-top:1.8rem;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:1.4rem}
 .svc-callout.alert-pulse{animation:alertPulse 2.5s ease-in-out infinite}
@@ -302,6 +298,19 @@ h2.stitle span{color:var(--gold)}
 .svc-callout-text p{font-size:.8rem;color:var(--muted)}
 .callout-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
 .cpill{font-size:.7rem;color:rgba(201,168,76,.8);padding:.18rem .55rem;border:1px solid rgba(201,168,76,.2);border-radius:20px}
+
+/* Bloco informativo — legislação municipal (Inspeção Predial) */
+.law-box{background:rgba(255,255,255,.02);border:1px solid rgba(201,168,76,.16);border-radius:14px;padding:2rem;margin-top:1.8rem}
+.law-tag{display:inline-block;font-size:.65rem;letter-spacing:2px;color:var(--gold);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:.25rem .8rem;margin-bottom:.9rem}
+.law-box h3{font-family:'Playfair Display',serif;font-size:1.15rem;margin-bottom:.8rem;color:var(--white)}
+.law-box>p{font-size:.85rem;color:var(--muted);line-height:1.75;margin-bottom:1.6rem;max-width:760px}
+.law-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem 1.8rem;margin-bottom:1.6rem}
+.law-item h4{font-size:.78rem;color:var(--gold);margin-bottom:.35rem;font-weight:600}
+.law-item p{font-size:.78rem;color:rgba(255,255,255,.5);line-height:1.6}
+.law-link{font-size:.78rem;color:var(--gold);border-bottom:1px solid rgba(201,168,76,.4);padding-bottom:2px}
+.law-link:hover{border-color:var(--gold)}
+@media(max-width:768px){.law-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.law-grid{grid-template-columns:1fr}.law-box{padding:1.4rem}}
 
 /* ── SOBRE ── */
 #sobre{background:var(--black)}
@@ -340,7 +349,7 @@ h2.stitle span{color:var(--gold)}
 .step{text-align:center;transition:transform .5s var(--ease)}
 @media(min-width:961px){.step:nth-child(even){transform:translateY(26px)}}
 .step-n{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-dark));color:var(--black);font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem;box-shadow:0 0 0 7px rgba(201,168,76,.08)}
-.step h3{font-family:'Playfair Display',serif;font-size:.87rem;margin-bottom:.4rem}
+.step h3{font-family:'Playfair Display',serif;font-size:.87rem;margin-bottom:.4rem;color:var(--gold)}
 .step p{font-size:.74rem;color:var(--muted);line-height:1.55}
 
 /* ── DEPOIMENTOS ── */
@@ -381,8 +390,10 @@ h2.stitle span{color:var(--gold)}
 .dif-card{background:linear-gradient(180deg,var(--black3),#161616);border:1px solid rgba(201,168,76,.1);border-radius:16px;padding:1.7rem;transition:transform .5s var(--ease),box-shadow .5s var(--ease),border-color .4s;box-shadow:0 1px 0 rgba(255,255,255,.04) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.1)}
 .dif-card:hover{border-color:rgba(201,168,76,.3);transform:translateY(-5px);box-shadow:0 1px 0 rgba(255,255,255,.05) inset,0 0 0 6px var(--black2),0 0 0 7px rgba(201,168,76,.26),0 16px 32px rgba(0,0,0,.4)}
 .dif-card:hover{border-color:rgba(201,168,76,.26);transform:translateY(-3px)}
-.dif-icon{font-size:1.4rem;margin-bottom:.8rem;display:block}
-.dif-card h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem}
+.dif-icon{display:block;margin-bottom:.9rem}
+.dif-icon svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.dif-grid .dif-card:first-child .dif-icon svg{width:34px;height:34px}
+.dif-card h3{font-size:.9rem;font-weight:600;margin-bottom:.38rem;color:var(--gold)}
 .dif-card p{font-size:.77rem;color:rgba(255,255,255,.47);line-height:1.6}
 
 /* ── FAQ ── */
@@ -466,7 +477,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .form-row{grid-template-columns:1fr}
   .sobre-badge{right:0}
-  .hero-portrait{max-width:42%;opacity:.65}
+  .hero-building svg{max-width:42%;opacity:.7}
   .svc-callout{flex-direction:column}
   .svc-callout .btn-gold{width:100%;justify-content:center}
 }
@@ -476,7 +487,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   .diag-layout{grid-template-columns:1fr}
   .stats-inner{gap:1rem}
   .stat-item .num{font-size:1.7rem}
-  .hero-portrait{display:none}
+  .hero-building{display:none}
   .hero-content{padding:90px 5% 50px;max-width:100%}
   h1.hero-title{font-size:clamp(1.7rem,5vw,2.4rem)}
 }
@@ -546,27 +557,36 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="hero-glow" aria-hidden="true"><span></span><span></span><span></span></div>
   <div class="hero-diagonal" aria-hidden="true"><span>CREA-SC · CREA-RS</span></div>
   <div class="hero-portrait-wrap">
-    <img src="kezia-hero.png" alt="Eng.ª Kézia Duarte" class="hero-portrait">
-  </div>
-  <div class="tower-sketch" aria-hidden="true">
-    <svg viewBox="0 0 200 190" fill="none">
-      <path class="ts-fill" d="M55 150 L55 95 Q55 88 62 88 L78 88 Q85 88 85 95 L85 150 Z"/>
-      <path class="ts-fill" d="M92 150 L92 55 Q92 47 100 47 L116 47 Q124 47 124 55 L124 150 Z"/>
-      <path class="ts-fill" d="M131 150 L131 75 Q131 68 138 68 L154 68 Q161 68 161 75 L161 150 Z"/>
-      <path id="towerDraw1" d="M55 150 L55 95 Q55 88 62 88 L78 88 Q85 88 85 95 L85 150"/>
-      <path id="towerDraw2" d="M92 150 L92 55 Q92 47 100 47 L116 47 Q124 47 124 55 L124 150"/>
-      <path id="towerDraw3" d="M131 150 L131 75 Q131 68 138 68 L154 68 Q161 68 161 75 L161 150"/>
-      <path id="towerBase" d="M38 150 Q108 172 178 150"/>
-      <circle class="ts-dot" cx="55" cy="95" r="2.2"/>
-      <circle class="ts-dot" cx="124" cy="55" r="2.2"/>
-      <circle class="ts-dot" cx="161" cy="75" r="2.2"/>
-    </svg>
+    <div class="hero-building" aria-hidden="true">
+      <svg viewBox="0 0 300 420" fill="none">
+        <!-- edificação estilizada — linework dourado, estética editorial -->
+        <rect class="hb-face" x="70" y="60" width="160" height="330" rx="2"/>
+        <rect class="hb-face" x="30" y="150" width="55" height="240"/>
+        <rect class="hb-face" x="215" y="110" width="60" height="280"/>
+        <g class="hb-grid">
+          <line x1="70" y1="105" x2="230" y2="105"/><line x1="70" y1="150" x2="230" y2="150"/>
+          <line x1="70" y1="195" x2="230" y2="195"/><line x1="70" y1="240" x2="230" y2="240"/>
+          <line x1="70" y1="285" x2="230" y2="285"/><line x1="70" y1="330" x2="230" y2="330"/>
+          <line x1="115" y1="60" x2="115" y2="390"/><line x1="150" y1="60" x2="150" y2="390"/>
+          <line x1="185" y1="60" x2="185" y2="390"/>
+        </g>
+        <g class="hb-win">
+          <rect x="82" y="78" width="20" height="14"/><rect x="128" y="78" width="20" height="14"/><rect x="174" y="78" width="20" height="14"/>
+          <rect x="82" y="120" width="20" height="14"/><rect x="128" y="120" width="20" height="14"/><rect x="197" y="120" width="20" height="14"/>
+          <rect x="82" y="165" width="20" height="14"/><rect x="152" y="165" width="20" height="14"/><rect x="197" y="165" width="20" height="14"/>
+          <rect x="105" y="210" width="20" height="14"/><rect x="152" y="210" width="20" height="14"/><rect x="197" y="210" width="20" height="14"/>
+          <rect x="82" y="255" width="20" height="14"/><rect x="128" y="255" width="20" height="14"/><rect x="174" y="255" width="20" height="14"/>
+          <rect x="82" y="300" width="20" height="14"/><rect x="152" y="300" width="20" height="14"/><rect x="197" y="300" width="20" height="14"/>
+        </g>
+        <line class="hb-ground" x1="15" y1="390" x2="285" y2="390"/>
+      </svg>
+    </div>
   </div>
   <div class="hero-content" id="heroContent">
     <div class="hero-badge">Engenharia Civil · SC</div>
     <div class="hero-kicker"><b>Engenharia que resiste</b><span class="kicker-rotate" id="kickerRotate"><span class="active">à perícia</span><span>à fiscalização</span><span>ao tribunal</span><span>ao tempo</span></span></div>
     <h1 class="hero-title">Regularização de Imóveis<br>e <span>Perícia em Engenharia</span><br>com Segurança Técnica</h1>
-    <p class="hero-sub">Regularize seu imóvel, resolva pendências técnicas e proteja seu patrimônio com acompanhamento profissional especializado. Do habite-se ao laudo pericial — tudo sob responsabilidade técnica com ART.</p>
+    <p class="hero-sub">Ajudamos você a <strong>destravar</strong> e <strong>regularizar</strong> o seu imóvel. Resolva pendências técnicas e proteja seu patrimônio com acompanhamento especializado, do habite-se ao laudo pericial — tudo sob responsabilidade técnica com ART.</p>
     <div class="hero-btns">
       <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -634,12 +654,14 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <p class="ssub">A maioria dos proprietários só descobre pendências na hora de vender, financiar ou transmitir por herança — quando o custo de resolver é muito maior.</p>
   </div>
   <div class="prob-grid">
-    <div class="prob-card"><span class="prob-emoji">🏚️</span><h3>Imóvel sem Habite-se</h3><p>Sem o Habite-se, o imóvel não pode ser financiado por bancos nem registrado adequadamente. A venda trava ou exige grande desconto.</p></div>
-    <div class="prob-card"><span class="prob-emoji">📐</span><h3>Área diferente da matrícula</h3><p>Discrepância entre a área real e o que está registrado gera problemas em financiamentos, inventários e disputas de divisa.</p></div>
-    <div class="prob-card"><span class="prob-emoji">📋</span><h3>Obra sem CNO na Receita</h3><p>Sem o Cadastro Nacional de Obras, não é possível emitir a CND. O imóvel fica bloqueado para venda e averbação.</p></div>
-    <div class="prob-card"><span class="prob-emoji">💸</span><h3>INSS de obra em aberto</h3><p>Débitos da construção travam a regularização. Mas muitos podem estar decaídos — e não precisam ser pagos.</p></div>
-    <div class="prob-card"><span class="prob-emoji">📄</span><h3>Imóvel sem averbação</h3><p>Construção não averbada não existe juridicamente. Impossível financiar, vender com segurança ou incluir em inventário.</p></div>
-    <div class="prob-card"><span class="prob-emoji">⚖️</span><h3>Necessidade de laudo técnico</h3><p>Disputas judiciais, vícios construtivos, avaliações de patrimônio exigem laudo pericial fundamentado em normas ABNT.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg></span><h3>Imóvel sem Habite-se</h3><p>Sem o Habite-se, o imóvel não pode ser financiado por bancos nem registrado adequadamente. A venda trava ou exige grande desconto.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M3 3l7 7"/><path d="M3 3v5M3 3h5"/><path d="M21 21l-7-7"/><path d="M21 21v-5M21 21h-5"/><path d="M13 3l8 8-10 10-8-8z"/></svg></span><h3>Área diferente da matrícula</h3><p>Discrepância entre a área real e o que está registrado gera problemas em financiamentos, inventários e disputas de divisa.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,3 14,8 19,8"/><path d="M9 15l2 2 4-4"/></svg></span><h3>Obra sem CNO na Receita</h3><p>Sem o Cadastro Nacional de Obras, não é possível emitir a CND. O imóvel fica bloqueado para venda e averbação.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-2.2 2.5-2.2s2.5.9 2.5 2c0 2-5 1.7-5 3.7 0 1.1 1.1 2 2.5 2s2.5-1 2.5-2.2"/></svg></span><h3>INSS de obra em aberto</h3><p>Débitos da construção travam a regularização. Mas muitos podem estar decaídos — e não precisam ser pagos.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,3 14,8 19,8"/><line x1="9" y1="16" x2="15" y2="12"/><line x1="9" y1="12" x2="15" y2="16"/></svg></span><h3>Imóvel sem averbação</h3><p>Construção não averbada não existe juridicamente. Impossível financiar, vender com segurança ou incluir em inventário.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M12 3v3M12 6l-5 9h10z"/><path d="M12 6l5 9h-10z" transform="translate(0,0)"/><line x1="12" y1="6" x2="12" y2="21"/><line x1="7" y1="21" x2="17" y2="21"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></span><h3>Necessidade de laudo técnico</h3><p>Disputas judiciais, vícios construtivos, avaliações de patrimônio exigem laudo pericial fundamentado em normas ABNT.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><rect x="3" y="10" width="18" height="10" rx="1"/><path d="M5 10l7-6 7 6"/><line x1="9" y1="14" x2="15" y2="14"/><line x1="9" y1="17" x2="15" y2="17"/><line x1="5" y1="5" x2="19" y2="19"/></svg></span><h3>Banco barrou o financiamento?</h3><p>Pendências documentais reprovam o financiamento na análise do banco. Identificamos e resolvemos exatamente o que está travando a operação.</p></div>
+    <div class="prob-card"><span class="prob-emoji"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></span><h3>Notificação da Prefeitura?</h3><p>Auto de infração ou notificação municipal exige resposta técnica dentro do prazo. Avaliamos o caso e conduzimos a regularização antes da multa.</p></div>
   </div>
   <div style="text-align:center;margin-top:2.2rem">
     <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">Verificar meu caso →</a>
@@ -650,7 +672,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 <section id="diagnostico">
   <div class="diag-layout">
     <div>
-      <span class="stag">Diagnóstico Gratuito</span>
+      <span class="stag">Diagnóstico Rápido</span>
       <div class="divider"></div>
       <h2 class="stitle">Descubra se seu imóvel está<br><span>irregular em 2 minutos</span></h2>
       <p class="ssub">Clique em cada item. Se alguma resposta for NÃO, seu imóvel pode precisar de regularização.</p>
@@ -661,16 +683,16 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
         <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>O imóvel está averbado no Cartório de RI?</span></div>
         <div class="diag-item" onclick="markDiag(this)"><span class="dq">?</span><span>Existe pendência com prefeitura ou INSS?</span></div>
       </div>
-      <div class="diag-result" id="diagResult"><strong style="color:var(--gold)">Atenção:</strong> Cada item não resolvido representa risco jurídico e financeiro. Solicite uma análise técnica gratuita.</div>
+      <div class="diag-result" id="diagResult"><strong style="color:var(--gold)">Atenção:</strong> Cada item não resolvido representa risco jurídico e financeiro. Solicite uma análise técnica com a engenheira.</div>
       <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="margin-top:1.4rem;display:inline-flex">Solicitar análise técnica →</a>
     </div>
     <div class="diag-cta-box">
-      <h3>Análise técnica sem custo</h3>
-      <p>Envie as informações básicas do seu imóvel pelo WhatsApp. A Eng.ª Kézia realiza um diagnóstico preliminar gratuito e orienta os próximos passos.</p>
+      <h3>Análise técnica personalizada</h3>
+      <p>Envie as informações básicas do seu imóvel pelo WhatsApp. A Eng.ª Kézia avalia sua situação e orienta os próximos passos, com valores conforme o tipo de diagnóstico necessário.</p>
       <div class="diag-pills">
         <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sem compromisso</div>
         <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Resposta em até 24h</div>
-        <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diagnóstico gratuito</div>
+        <div class="diag-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Orçamento sob medida</div>
       </div>
       <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="width:100%;justify-content:center">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
@@ -739,15 +761,28 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">03</div><h3>Avaliação de Imóveis (ABNT 14653)</h3><p>Avaliação mercadológica e patrimonial para inventários, partilhas e negociações.</p></div>
       <div class="svc-card"><div class="svc-num">04</div><h3>Parecer Técnico de Engenharia</h3><p>Documento fundamentado para situações que exigem opinião profissional habilitada.</p></div>
       <div class="svc-card"><div class="svc-num">05</div><h3>Inspeção Predial (ABNT NBR 16747)</h3><p>Avaliação sistemática das condições técnicas, uso, manutenção e desempenho da edificação.</p></div>
-      <div class="svc-card"><div class="svc-num">06</div><h3>Análise Estrutural</h3><p>Verificação técnica das condições estruturais, identificando riscos e necessidade de reforço.</p></div>
-      <div class="svc-card"><div class="svc-num">07</div><h3>Due Diligence Técnica na Compra</h3><p>Análise completa antes da aquisição, identificando riscos e estimando custos de regularização.</p></div>
-      <div class="svc-card"><div class="svc-num">08</div><h3>Vistoria de Entrada, Saída e Entrega de Chaves</h3><p>Vistoria técnica de imóveis para locação, compra ou entrega de obra, com registro fotográfico e laudo detalhado.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Due Diligence Técnica na Compra</h3><p>Análise completa antes da aquisição, identificando riscos e estimando custos de regularização.</p></div>
+      <div class="svc-card"><div class="svc-num">07</div><h3>Vistoria de Entrada, Saída e Entrega de Chaves</h3><p>Vistoria técnica de imóveis para locação, compra ou entrega de obra, com registro fotográfico e laudo detalhado.</p></div>
+    </div>
+    <div class="law-box">
+      <div class="law-tag">BALNEÁRIO CAMBORIÚ</div>
+      <h3>Lei nº 2.805/2008 — Vistoria Predial Obrigatória</h3>
+      <p>A Lei nº 2.805/2008 de Balneário Camboriú tornou obrigatórias as vistorias prediais periódicas em edificações da cidade, com o objetivo de identificar problemas estruturais e garantir a segurança da população. Ela estabelece prazos para a realização das inspeções, exige laudos técnicos elaborados por profissionais habilitados e determina punições, como multas, para quem não cumprir a lei.</p>
+      <div class="law-grid">
+        <div class="law-item"><h4>O que a lei exige</h4><p>Vistorias periódicas, profissionais habilitados e documentação técnica.</p></div>
+        <div class="law-item"><h4>Obrigações do proprietário</h4><p>Manter a Ficha Técnica da Edificação e o Formulário de Inspeção Técnica em local visível e acessível à fiscalização municipal.</p></div>
+        <div class="law-item"><h4>Punições</h4><p>Multas renováveis a cada 30 dias até a regularização da situação.</p></div>
+        <div class="law-item"><h4>Para quem se aplica</h4><p>Proprietários e gestores de todas as edificações do município, públicas e privadas.</p></div>
+        <div class="law-item"><h4>Prazos</h4><p>Prazos específicos para a primeira e as próximas vistorias, com base na idade do imóvel.</p></div>
+        <div class="law-item"><h4>Laudos técnicos</h4><p>A inspeção resulta em Parecer Técnico com as condições da edificação, a ser apresentado à prefeitura junto com a ficha técnica.</p></div>
+      </div>
+      <a href="https://www.jusbrasil.com.br/legislacao/641532/lei-2805-08" target="_blank" class="law-link">Ver texto da lei no Jusbrasil ↗</a>
     </div>
     <div class="svc-callout">
       <div class="svc-callout-text">
         <h3>Laudo com validade jurídica</h3>
-        <p>Atendemos advogados, imobiliárias, construtoras e partes em processos nos tribunais de <strong style="color:var(--gold)">SC, RS e PR</strong>. Fundamentação técnica em normas ABNT, com imparcialidade e responsabilidade de CREA.</p>
-        <div class="callout-pills"><span class="cpill">✦ Aceito em processos judiciais</span><span class="cpill">✦ Fundamentação ABNT/NBR 14.653</span><span class="cpill">✦ Disponibilidade para audiência</span></div>
+        <p>Atendemos advogados, imobiliárias, construtoras e partes em processos nos tribunais de <strong style="color:var(--gold)">SC, RS e PR</strong>. Fundamentação técnica em normas ABNT/NBR 14.653 e outras normas aplicáveis, com imparcialidade e responsabilidade de CREA.</p>
+        <div class="callout-pills"><span class="cpill">✦ Aceito em processos judiciais</span><span class="cpill">✦ Fundamentação ABNT/NBR 14.653 e outras normas</span><span class="cpill">✦ Assistência Técnica</span><span class="cpill">✦ Disponibilidade para audiência</span></div>
       </div>
       <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Solicitar laudo pericial</a>
     </div>
@@ -819,14 +854,14 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="steps-line-fill" id="stepsLineFill"></div>
     <div class="steps-grid" id="stepsGrid">
       <div class="step"><div class="step-n">01</div><h3>Contato inicial</h3><p>Você entra em contato pelo WhatsApp e descreve sua situação.</p></div>
-      <div class="step"><div class="step-n">02</div><h3>Análise técnica</h3><p>Diagnóstico preliminar gratuito com levantamento dos documentos necessários.</p></div>
+      <div class="step"><div class="step-n">02</div><h3>Análise técnica</h3><p>Diagnóstico preliminar com levantamento dos documentos necessários.</p></div>
       <div class="step"><div class="step-n">03</div><h3>Proposta técnica</h3><p>Plano de ação com prazo definido e contrato claro.</p></div>
       <div class="step"><div class="step-n">04</div><h3>Execução</h3><p>Cuidamos de toda burocracia: prefeitura, Receita Federal, cartórios e tribunais.</p></div>
       <div class="step"><div class="step-n">05</div><h3>Entrega da solução</h3><p>Documentos, certidões e laudos entregues. Patrimônio protegido.</p></div>
     </div>
   </div>
   <div style="text-align:center;margin-top:2.5rem">
-    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.1rem">O primeiro passo é uma conversa — sem custo, sem compromisso.</p>
+    <p style="font-size:.82rem;color:var(--muted);margin-bottom:1.1rem">O primeiro passo é uma conversa — sem compromisso.</p>
     <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold">Iniciar agora pelo WhatsApp →</a>
   </div>
 </section>
@@ -872,12 +907,12 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <h2 class="stitle">Nossos <span>diferenciais técnicos</span></h2>
   </div>
   <div class="dif-grid">
-    <div class="dif-card"><span class="dif-icon">🏛️</span><h3>Experiência em Regularização</h3><p>Mais de 300 imóveis regularizados com domínio completo dos processos municipais, estaduais e federais.</p></div>
-    <div class="dif-card"><span class="dif-icon">📝</span><h3>Responsabilidade Técnica com ART</h3><p>Todo serviço com Anotação de Responsabilidade Técnica. Proteção jurídica em cada etapa.</p></div>
-    <div class="dif-card"><span class="dif-icon">⚖️</span><h3>Legislação e Normas Técnicas</h3><p>Conhecimento aprofundado de legislação imobiliária, tributária e normas ABNT.</p></div>
-          <div class="dif-card"><span class="dif-icon">🔍</span><h3>Experiência em Perícias Judiciais</h3><p>Perita habilitada com atuação em SC, RS e PR. Laudos reconhecidos por tribunais.</p></div>
-    <div class="dif-card"><span class="dif-icon">💬</span><h3>Comunicação Clara e Transparente</h3><p>Cada etapa explicada de forma simples. Você nunca fica sem saber o que está acontecendo.</p></div>
-    <div class="dif-card"><span class="dif-icon">🎯</span><h3>Foco Total no Resultado</h3><p>Acompanhamos todo o processo do início à entrega. Nossa missão é resolver, não apenas orientar.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><line x1="3" y1="21" x2="21" y2="21"/><line x1="5" y1="21" x2="5" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/><line x1="15" y1="21" x2="15" y2="9"/><line x1="19" y1="21" x2="19" y2="9"/><path d="M3 9l9-6 9 6"/></svg></span><h3>Experiência em Regularização</h3><p>Mais de 300 imóveis regularizados com domínio completo dos processos municipais, estaduais e federais.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><path d="M12 2l8 3v6c0 5-3.5 8.5-8 11-4.5-2.5-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>Responsabilidade Técnica com ART</h3><p>Todo serviço com Anotação de Responsabilidade Técnica. Proteção jurídica em cada etapa.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><line x1="12" y1="3" x2="12" y2="21"/><line x1="6" y1="21" x2="18" y2="21"/><path d="M12 6l-5 9h10z"/><path d="M12 6l5 9h-10z"/><circle cx="4.5" cy="12" r="1.6"/><circle cx="19.5" cy="12" r="1.6"/></svg></span><h3>Legislação e Normas Técnicas</h3><p>Conhecimento aprofundado de legislação imobiliária, tributária e normas ABNT.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><line x1="15.5" y1="15.5" x2="21" y2="21"/></svg></span><h3>Experiência em Perícias Judiciais</h3><p>Perita habilitada com atuação em SC, RS e PR. Laudos reconhecidos por tribunais.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="12" x2="13" y2="12"/></svg></span><h3>Comunicação Clara e Transparente</h3><p>Cada etapa explicada de forma simples. Você nunca fica sem saber o que está acontecendo.</p></div>
+    <div class="dif-card"><span class="dif-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4.3"/><circle cx="12" cy="12" r=".8" fill="var(--gold)" stroke="none"/></svg></span><h3>Foco Total no Resultado</h3><p>Acompanhamos todo o processo do início à entrega. Nossa missão é resolver, não apenas orientar.</p></div>
   </div>
 </section>
 
@@ -889,6 +924,8 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <h2 class="stitle">Perguntas que nossos <span>clientes fazem</span></h2>
   </div>
   <div class="faq-wrap">
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funciona a primeira consulta técnica?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Você conta a situação do imóvel pelo WhatsApp, a Eng.ª Kézia avalia o caso e indica qual tipo de análise ou diagnóstico é necessário, com valor e prazo definidos antes de qualquer serviço ser iniciado — sem letras miúdas.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O valor do serviço é fixo ou varia?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Cada imóvel tem uma situação diferente, então o orçamento é feito sob medida após a análise técnica inicial — sem cobrança surpresa. Você recebe uma proposta clara, com escopo e valor fechados, antes de aprovar qualquer etapa.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Imóvel sem Habite-se pode ser vendido?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Tecnicamente pode, mas bancos não financiam imóveis sem Habite-se, eliminando a maioria dos compradores. A venda ocorre com grande desconto, risco jurídico para ambas as partes e impossibilidade de registro formal. Regularizar antes protege e valoriza o bem.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quanto tempo leva uma regularização de imóvel?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Casos simples de averbação podem ser concluídos em 30 a 60 dias. Regularizações que envolvem aprovação municipal, INSS e cartório podem levar de 3 a 12 meses. Uma análise técnica prévia estima o tempo necessário para cada situação.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">É possível reduzir o INSS de obra?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim, por dois mecanismos: o Fator de Ajuste (FAD), que reduz a base de cálculo, e a decadência tributária, que extingue débitos com mais de cinco anos. Em muitos casos o valor final é substancialmente menor que o débito original.</div></div></div>
@@ -907,7 +944,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <span class="stag">Fale com a Engenheira</span>
       <div class="divider"></div>
       <h2 class="stitle">Precisa regularizar seu imóvel ou resolver uma <span>questão técnica?</span></h2>
-      <p>Fale diretamente com a Eng.ª Kézia Duarte e receba uma análise preliminar gratuita da sua situação.</p>
+      <p>Fale diretamente com a Eng.ª Kézia Duarte e receba uma análise técnica da sua situação.</p>
       <div class="contact-items">
         <div class="contact-item"><span class="ci-icon">📱</span><div><div class="ci-label">WhatsApp</div><div class="ci-val">(47) 99123-3830</div><div class="ci-note">Direto com a engenheira</div></div></div>
         <div class="contact-item"><span class="ci-icon">✉️</span><div><div class="ci-label">E-mail</div><div class="ci-val">contato@engenhariaduarte.com.br</div></div></div>
@@ -951,12 +988,12 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="cta-inner">
     <span class="stag" style="display:block;text-align:center;margin-bottom:.8rem">Entre em Contato</span>
     <h2>Precisa regularizar seu imóvel ou resolver <span style="color:var(--gold)">pendências técnicas?</span></h2>
-    <p>Entre em contato para uma análise inicial gratuita. Diagnóstico preciso e acompanhamento completo até a regularização.</p>
+    <p>Entre em contato para uma análise inicial da sua situação. Diagnóstico preciso e acompanhamento completo até a regularização.</p>
     <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold btn-pulse" style="font-size:.92rem;padding:.9rem 2rem">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
       Falar no WhatsApp
     </a>
-    <p class="cta-warn">⏱ Resposta em até 24h úteis · Análise preliminar gratuita</p>
+    <p class="cta-warn">⏱ Resposta em até 24h úteis · Sem compromisso</p>
   </div>
 </section>
 
@@ -1032,6 +1069,10 @@ function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
   if(!wrap)return;
   const items=wrap.querySelectorAll('span');
   if(items.length<2)return;
+  // Largura do contêiner segue a palavra mais longa, para nenhuma palavra ser cortada
+  let maxW=0;
+  items.forEach(el=>{maxW=Math.max(maxW,el.scrollWidth)});
+  wrap.style.width=maxW+'px';
   if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
   let i=0;
   setInterval(()=>{
@@ -1094,17 +1135,7 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
     .from('.hero-btns',{y:20,opacity:0,duration:.65,ease:'power3.out'},'-=.4')
     .from('.credentials-card',{y:18,opacity:0,duration:.6,ease:'power3.out'},'-=.35')
     .from('.hero-stars',{y:14,opacity:0,duration:.55,ease:'power3.out'},'-=.3')
-    .from('.hero-portrait',{x:60,opacity:0,duration:1,ease:'power3.out'},'-=1');
-
-  // Traçado técnico das torres — desenha como esboço
-  ['#towerDraw1','#towerDraw2','#towerDraw3','#towerBase'].forEach((sel,i)=>{
-    const p=document.querySelector(sel);
-    if(!p)return;
-    const len=p.getTotalLength();
-    p.style.strokeDasharray=len;
-    p.style.strokeDashoffset=len;
-    gsap.to(p,{strokeDashoffset:0,duration:1.3,delay:.6+i*.25,ease:'power2.inOut'});
-  });
+    .from('.hero-building',{x:60,opacity:0,duration:1,ease:'power3.out'},'-=1');
 
   // Stats counters
   document.querySelectorAll('.stat-item .num').forEach(el=>{
