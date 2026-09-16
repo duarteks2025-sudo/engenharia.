@@ -15,6 +15,47 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Regularização de Imóveis em Santa Catarina | Habite-se | INSS de Obra | Duarte Engenharia</title>
 <meta name="description" content="Regularização de imóveis, perícia em engenharia civil e regularização fiscal de obras em SC. CREA-SC 191277-4 | CREA-RS 253921. Mais de 300 imóveis regularizados."/>
+<link rel="canonical" href="https://www.engenhariaduarte.com.br/"/>
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png"/>
+<link rel="apple-touch-icon" href="apple-touch-icon.png"/>
+<meta property="og:type" content="website"/>
+<meta property="og:locale" content="pt_BR"/>
+<meta property="og:site_name" content="Duarte Engenharia"/>
+<meta property="og:title" content="Regularização de Imóveis em Santa Catarina | Duarte Engenharia"/>
+<meta property="og:description" content="Regularização de imóveis, perícia em engenharia civil e regularização fiscal de obras em SC. CREA-SC 191277-4 | CREA-RS 253921. Mais de 300 imóveis regularizados."/>
+<meta property="og:image" content="https://www.engenhariaduarte.com.br/kezia-hero.webp"/>
+<meta property="og:url" content="https://www.engenhariaduarte.com.br/"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  "name": "Duarte Engenharia",
+  "image": "https://www.engenhariaduarte.com.br/kezia-hero.webp",
+  "url": "https://www.engenhariaduarte.com.br/",
+  "telephone": "+5554999358527",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Balneário Camboriú",
+    "addressRegion": "SC",
+    "addressCountry": "BR"
+  },
+  "areaServed": ["Balneário Camboriú","Itajaí","Camboriú","Itapema","Florianópolis","Santa Catarina","Rio Grande do Sul","Paraná"],
+  "founder": {
+    "@type": "Person",
+    "name": "Kézia Duarte"
+  },
+  "sameAs": [
+    "https://www.instagram.com/eng.keziaduarte"
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "100"
+  }
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
@@ -136,6 +177,42 @@ h1.hero-title span{color:var(--gold)}
 .hero-stars{display:flex;align-items:center;gap:.5rem;font-size:.73rem;color:var(--muted)}
 .stars-row{display:flex;gap:2px}
 .stars-row svg{width:12px;height:12px;fill:var(--gold)}
+
+/* Kicker rotativo — frase que se transforma */
+.hero-kicker{display:flex;flex-wrap:wrap;align-items:baseline;gap:.4rem;font-family:'Playfair Display',serif;font-size:clamp(.95rem,1.6vw,1.15rem);font-style:italic;color:rgba(255,255,255,.6);margin-bottom:.9rem}
+.hero-kicker b{font-weight:600;color:rgba(255,255,255,.6);font-style:normal}
+.kicker-rotate{position:relative;display:inline-block;color:var(--gold);min-width:7.5ch;height:1.4em;overflow:hidden;vertical-align:bottom}
+.kicker-rotate span{position:absolute;left:0;top:0;white-space:nowrap;opacity:0;transform:translateY(60%);transition:opacity .5s ease,transform .5s ease}
+.kicker-rotate span.active{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.kicker-rotate span{transition:none}}
+
+/* Traçado técnico das três torres — SVG animado */
+.tower-sketch{position:absolute;right:37%;bottom:10%;width:min(200px,19vw);opacity:.5;z-index:1;pointer-events:none}
+.tower-sketch svg{width:100%;height:auto;overflow:visible}
+.tower-sketch path{fill:none;stroke:var(--gold);stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.tower-sketch .ts-fill{fill:var(--gold);fill-opacity:.06;stroke:none}
+.tower-sketch .ts-dot{fill:var(--gold)}
+
+/* Cartão de credenciais — quebra a borda entre texto e foto */
+.credentials-card{position:relative;z-index:3;background:rgba(10,10,10,.82);backdrop-filter:blur(6px);border:1px solid rgba(201,168,76,.35);border-radius:10px;padding:1.1rem 1.4rem;display:grid;grid-template-columns:repeat(2,auto);gap:.7rem 1.8rem;max-width:420px;margin-top:.4rem;margin-bottom:2rem}
+.credentials-card .cred-item{display:flex;align-items:center;gap:.5rem;font-size:.74rem;color:rgba(255,255,255,.65);white-space:nowrap}
+.credentials-card .cred-item svg{width:13px;height:13px;color:var(--gold);flex-shrink:0}
+.credentials-card .cred-item strong{color:var(--white);font-weight:600}
+@media(min-width:901px){
+  .credentials-card{position:absolute;left:500px;bottom:16%;margin:0}
+}
+@media(max-width:900px){
+  .tower-sketch{display:none}
+}
+
+/* Faixa de normas técnicas — marquee */
+.tech-marquee{background:var(--black2);border-top:1px solid rgba(201,168,76,.1);border-bottom:1px solid rgba(201,168,76,.1);overflow:hidden;padding:.65rem 0;white-space:nowrap}
+.tech-marquee-track{display:inline-flex;align-items:center;gap:2.2rem;animation:marquee 32s linear infinite}
+.tech-marquee:hover .tech-marquee-track{animation-play-state:paused}
+.tech-marquee-item{font-size:.72rem;letter-spacing:1.2px;color:rgba(201,168,76,.55);font-weight:600;display:inline-flex;align-items:center;gap:2.2rem}
+.tech-marquee-item::after{content:'•';color:rgba(201,168,76,.3);margin-left:2.2rem}
+@keyframes marquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tech-marquee-track{animation:none}}
 
 /* ── STATS BAR ── */
 .stats-bar{background:var(--black2);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);padding:2rem 5%}
@@ -387,7 +464,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="nav-inner">
     <a href="#hero" class="logo">
       <div class="logo-svg-wrap">
-        <img src="logo.png" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+        <img src="logo.webp" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
       </div>
       <div class="logo-text"><span class="brand">DUARTE</span><span class="sub">Engenharia</span></div>
     </a>
@@ -421,10 +498,25 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   <div class="hero-bg"></div>
   <div class="hero-overlay"></div>
   <div class="hero-portrait-wrap">
-    <img src="kezia-hero.png" alt="Eng.ª Kézia Duarte" class="hero-portrait">
+    <img src="kezia-hero.webp" alt="Eng.ª Kézia Duarte" class="hero-portrait">
+  </div>
+  <div class="tower-sketch" aria-hidden="true">
+    <svg viewBox="0 0 200 190" fill="none">
+      <path class="ts-fill" d="M55 150 L55 95 Q55 88 62 88 L78 88 Q85 88 85 95 L85 150 Z"/>
+      <path class="ts-fill" d="M92 150 L92 55 Q92 47 100 47 L116 47 Q124 47 124 55 L124 150 Z"/>
+      <path class="ts-fill" d="M131 150 L131 75 Q131 68 138 68 L154 68 Q161 68 161 75 L161 150 Z"/>
+      <path id="towerDraw1" d="M55 150 L55 95 Q55 88 62 88 L78 88 Q85 88 85 95 L85 150"/>
+      <path id="towerDraw2" d="M92 150 L92 55 Q92 47 100 47 L116 47 Q124 47 124 55 L124 150"/>
+      <path id="towerDraw3" d="M131 150 L131 75 Q131 68 138 68 L154 68 Q161 68 161 75 L161 150"/>
+      <path id="towerBase" d="M38 150 Q108 172 178 150"/>
+      <circle class="ts-dot" cx="55" cy="95" r="2.2"/>
+      <circle class="ts-dot" cx="124" cy="55" r="2.2"/>
+      <circle class="ts-dot" cx="161" cy="75" r="2.2"/>
+    </svg>
   </div>
   <div class="hero-content" id="heroContent">
     <div class="hero-badge">Engenharia Civil · SC</div>
+    <div class="hero-kicker"><b>Engenharia que resiste</b><span class="kicker-rotate" id="kickerRotate"><span class="active">à perícia</span><span>à fiscalização</span><span>ao tribunal</span><span>ao tempo</span></span></div>
     <h1 class="hero-title">Regularização de Imóveis<br>e <span>Perícia em Engenharia</span><br>com Segurança Técnica</h1>
     <p class="hero-sub">Regularize seu imóvel, resolva pendências técnicas e proteja seu patrimônio com acompanhamento profissional especializado. Do habite-se ao laudo pericial — tudo sob responsabilidade técnica com ART.</p>
     <div class="hero-btns">
@@ -433,12 +525,6 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
         Falar no WhatsApp
       </a>
       <a href="#diagnostico" class="btn-outline">Solicitar análise do imóvel</a>
-    </div>
-    <div class="hero-trust">
-      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>CREA-SC 191277-4</div>
-      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>CREA-RS 253921</div>
-      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg>ART em todos os serviços</div>
-      <div class="trust-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>+300 imóveis regularizados</div>
     </div>
     <div class="hero-stars">
       <div class="stars-row">
@@ -450,6 +536,12 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       </div>
       <span><strong style="color:var(--white)">4,9</strong> no Google · CNPJ 47.185.035/0001-06</span>
     </div>
+    <div class="credentials-card">
+      <div class="cred-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><strong>CREA-SC</strong>&nbsp;191277-4</div>
+      <div class="cred-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><strong>CREA-RS</strong>&nbsp;253921</div>
+      <div class="cred-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14,2 14,8 20,8"/></svg><strong>ART</strong>&nbsp;em todo serviço</div>
+      <div class="cred-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><strong>+300</strong>&nbsp;imóveis regularizados</div>
+    </div>
   </div>
 </section>
 
@@ -460,6 +552,28 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="stat-item"><div class="num" data-target="2" data-suffix="">2</div><div class="label">Registros CREA (SC e RS)</div></div>
     <div class="stat-item"><div class="num" data-target="100" data-suffix="%">100%</div><div class="label">ART em Cada Serviço</div></div>
     <div class="stat-item"><div class="num" data-target="4.9" data-suffix="★">4,9★</div><div class="label">Avaliação dos Clientes</div></div>
+  </div>
+</div>
+
+<!-- FAIXA DE NORMAS TÉCNICAS -->
+<div class="tech-marquee" aria-hidden="true">
+  <div class="tech-marquee-track">
+    <span class="tech-marquee-item">NBR 14.653 · AVALIAÇÃO DE IMÓVEIS</span>
+    <span class="tech-marquee-item">NBR 12.721 · INCORPORAÇÃO IMOBILIÁRIA</span>
+    <span class="tech-marquee-item">CBMSC · CORPO DE BOMBEIROS</span>
+    <span class="tech-marquee-item">CREA-SC 191277-4</span>
+    <span class="tech-marquee-item">CREA-RS 253921</span>
+    <span class="tech-marquee-item">ART · ANOTAÇÃO DE RESPONSABILIDADE TÉCNICA</span>
+    <span class="tech-marquee-item">CNO · RECEITA FEDERAL</span>
+    <span class="tech-marquee-item">AVCB / CLCB</span>
+    <span class="tech-marquee-item">NBR 14.653 · AVALIAÇÃO DE IMÓVEIS</span>
+    <span class="tech-marquee-item">NBR 12.721 · INCORPORAÇÃO IMOBILIÁRIA</span>
+    <span class="tech-marquee-item">CBMSC · CORPO DE BOMBEIROS</span>
+    <span class="tech-marquee-item">CREA-SC 191277-4</span>
+    <span class="tech-marquee-item">CREA-RS 253921</span>
+    <span class="tech-marquee-item">ART · ANOTAÇÃO DE RESPONSABILIDADE TÉCNICA</span>
+    <span class="tech-marquee-item">CNO · RECEITA FEDERAL</span>
+    <span class="tech-marquee-item">AVCB / CLCB</span>
   </div>
 </div>
 
@@ -540,14 +654,16 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">04</div><h3>Desdobro e Unificação de Terrenos</h3><p>Divisão em lotes independentes ou unificação de lotes contíguos, conforme legislação municipal.</p></div>
       <div class="svc-card"><div class="svc-num">05</div><h3>Instituição de Condomínio</h3><p>Criação formal de condomínio edilício com convenção, registro e trâmites legais completos.</p></div>
       <div class="svc-card"><div class="svc-num">06</div><h3>Retificação de Área</h3><p>Correção da metragem registrada em cartório quando diverge da área real do imóvel.</p></div>
+      <div class="svc-card"><div class="svc-num">07</div><h3>Elaboração de Projetos</h3><p>Desenvolvimento de projetos arquitetônicos e complementares para aprovação junto à prefeitura.</p></div>
+      <div class="svc-card"><div class="svc-num">08</div><h3>Mentoria em Regularização Imobiliária</h3><p>Mentoria individual para engenheiros, arquitetos e corretores que atuam com regularização de imóveis.</p></div>
     </div>
     <div class="svc-callout">
       <div class="svc-callout-text">
         <h3>Regularize e valorize seu imóvel</h3>
-        <p>Um imóvel regular pode valer até <strong style="color:var(--gold)">30% mais</strong> e fica apto para financiamento e transmissão.</p>
+        <p>Um imóvel regular pode valorizar até <strong style="color:var(--gold)">40% mais</strong> e fica apto para financiamento e transmissão.</p>
         <div class="callout-pills"><span class="cpill">✦ Apto para financiamento</span><span class="cpill">✦ Herança sem bloqueios</span><span class="cpill">✦ Segurança jurídica total</span></div>
       </div>
-      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Solicitar análise gratuita</a>
+      <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Solicitar análise</a>
     </div>
   </div>
   <div class="tab-panel" id="tab-fisc">
@@ -557,11 +673,13 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">03</div><h3>Análise de Decadência de INSS</h3><p>Para obras com mais de 5 anos — análise que pode eliminar legalmente débitos previdenciários antigos.</p></div>
       <div class="svc-card"><div class="svc-num">04</div><h3>Emissão de CND</h3><p>Certidão Negativa de Débitos junto à Receita Federal, indispensável para averbação e financiamento.</p></div>
       <div class="svc-card"><div class="svc-num">05</div><h3>Regularização de ISS / ISSQN</h3><p>Regularização do Imposto Sobre Serviços perante o município, incluindo cálculo e negociação de débitos.</p></div>
+      <div class="svc-card"><div class="svc-num">06</div><h3>Consultoria e Diagnóstico de Processos</h3><p>Diagnóstico técnico especializado em regularização de imóveis e redução de INSS de obra, com plano de ação.</p></div>
+      <div class="svc-card"><div class="svc-num">07</div><h3>Mentoria em Regularização Fiscal</h3><p>Mentoria para profissionais e escritórios que atuam com regularização fiscal de obras em todo o Brasil.</p></div>
     </div>
     <div class="svc-callout alert-pulse">
       <div class="svc-callout-text">
         <h3>⚠ Risco de Aferição Indireta</h3>
-        <p>Obra não declarada corretamente pode gerar <strong style="color:var(--gold)">multas de até 225%</strong> sobre o imposto devido, além de juros e correção monetária.</p>
+        <p>Obra não declarada corretamente pode gerar <strong style="color:var(--gold)">multas de até 225%</strong> sobre o imposto devido, além de juros e correção monetária. <strong style="color:var(--gold)">Atendimento nacional</strong> — todo o Brasil, 100% remoto.</p>
       </div>
       <a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank" class="btn-gold" style="flex-shrink:0">Analisar INSS da Obra</a>
     </div>
@@ -575,6 +693,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <div class="svc-card"><div class="svc-num">05</div><h3>Inspeção Predial (ABNT NBR 16747)</h3><p>Avaliação sistemática das condições técnicas, uso, manutenção e desempenho da edificação.</p></div>
       <div class="svc-card"><div class="svc-num">06</div><h3>Análise Estrutural</h3><p>Verificação técnica das condições estruturais, identificando riscos e necessidade de reforço.</p></div>
       <div class="svc-card"><div class="svc-num">07</div><h3>Due Diligence Técnica na Compra</h3><p>Análise completa antes da aquisição, identificando riscos e estimando custos de regularização.</p></div>
+      <div class="svc-card"><div class="svc-num">08</div><h3>Vistoria de Entrada, Saída e Entrega de Chaves</h3><p>Vistoria técnica de imóveis para locação, compra ou entrega de obra, com registro fotográfico e laudo detalhado.</p></div>
     </div>
   </div>
   <div class="tab-panel" id="tab-bomb">
@@ -592,7 +711,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 <section id="sobre">
   <div class="sobre-layout">
     <div class="sobre-img-wrap">
-      <img src="kezia-portrait.png" alt="Eng.ª Kézia Duarte" style="width:100%;border-radius:12px;display:block">
+      <img src="kezia-portrait.webp" alt="Eng.ª Kézia Duarte" style="width:100%;border-radius:12px;display:block">
       <div class="sobre-img-frame"></div>
       <div class="sobre-badge"><div class="bnum">300+</div><div class="blab">Imóveis<br>Regularizados</div></div>
     </div>
@@ -707,7 +826,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Quando é necessário um laudo técnico?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Em disputas judiciais, inventários, identificação de vícios construtivos, avaliação de danos após sinistros, análise de riscos antes de compra e processos de desapropriação. Deve ser elaborado por engenheiro registrado no CREA com ART.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Posso regularizar obra antiga feita sem projeto?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. É possível elaborar o projeto "as built" da edificação existente e submetê-lo à aprovação municipal. Dependendo do município e ano da construção, podem existir legislações de regularização simplificada.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O que é o CNO e por que preciso dele?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O CNO é o registro da construção na Receita Federal, obrigatório para obras de engenharia civil. Sem ele, não é possível recolher o INSS de obra nem obter a CND, exigida pelo cartório para averbação e por bancos para financiamento.</div></div></div>
-    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Vocês atendem fora de Balneário Camboriú?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Atendemos todo o litoral catarinense — Florianópolis, Itajaí, Camboriú, Itapema, Bombinhas e região. Para serviços fiscais (CNO/INSS/CND) junto à Receita Federal, o atendimento pode ser remoto para todo o Brasil.</div></div></div>
+    <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Vocês atendem fora de Balneário Camboriú?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Atendemos todo o litoral catarinense — Florianópolis, Itajaí, Camboriú, Itapema, Bombinhas e região — além de SC, RS e PR presencialmente, com atendimento em São Paulo e Rio de Janeiro em breve. Para regularização fiscal (CNO/INSS/CND/ISSQN) junto à Receita Federal e prefeituras, o atendimento é nacional, remoto para todo o Brasil.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qual a diferença entre laudo pericial e parecer técnico?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O laudo pericial é formal e completo, indicado para processos judiciais. O parecer técnico é mais objetivo e ágil, indicado para decisões extrajudiciais, negociações ou análises preliminares.</div></div></div>
   </div>
 </section>
@@ -721,7 +840,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <h2 class="stitle">Precisa regularizar seu imóvel ou resolver uma <span>questão técnica?</span></h2>
       <p>Fale diretamente com a Eng.ª Kézia Duarte e receba uma análise preliminar gratuita da sua situação.</p>
       <div class="contact-items">
-        <div class="contact-item"><span class="ci-icon">📱</span><div><div class="ci-label">WhatsApp</div><div class="ci-val">(54) 99935-8527</div><div class="ci-note">Direto com a engenheira</div></div></div>
+        <div class="contact-item"><span class="ci-icon">📱</span><div><div class="ci-label">WhatsApp</div><div class="ci-val">(47) 99123-3830</div><div class="ci-note">Direto com a engenheira</div></div></div>
         <div class="contact-item"><span class="ci-icon">✉️</span><div><div class="ci-label">E-mail</div><div class="ci-val">contato@engenhariaduarte.com.br</div></div></div>
         <div class="contact-item"><span class="ci-icon">📍</span><div><div class="ci-label">Localização</div><div class="ci-val">Balneário Camboriú — SC</div><div class="ci-note">Atendimento em todo o litoral catarinense</div></div></div>
         <div class="contact-item"><span class="ci-icon">⏱</span><div><div class="ci-label">Resposta</div><div class="ci-val">Em até 24h úteis</div></div></div>
@@ -742,7 +861,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
       <p class="form-sub">Grátis e sem compromisso — respondemos em até 24h úteis</p>
       <div class="form-row">
         <div class="form-group"><label>Seu nome</label><input type="text" placeholder="Nome completo"/></div>
-        <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(54) 99999-9999"/></div>
+        <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(47) 99999-9999"/></div>
       </div>
       <div class="form-group"><label>E-mail</label><input type="email" placeholder="email@exemplo.com"/></div>
       <div class="form-group"><label>Necessidade</label>
@@ -778,7 +897,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="footer-brand">
       <a href="#hero" class="logo" style="display:inline-flex">
         <div class="logo-svg-wrap">
-          <img src="logo.png" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
+          <img src="logo.webp" alt="Duarte Engenharia Logo" style="width:100%;height:100%;object-fit:contain;border-radius:50%">
         </div>
         <div class="logo-text"><span class="brand">DUARTE</span><span class="sub">Engenharia</span></div>
       </a>
@@ -812,7 +931,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="footer-col">
       <h4>Contato</h4>
       <ul>
-        <li><a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank">WhatsApp: (54) 99935-8527</a></li>
+        <li><a href="https://wa.me/qr/F6SLRHFJZVLYO1" target="_blank">WhatsApp: (47) 99123-3830</a></li>
         <li><a href="mailto:contato@engenhariaduarte.com.br">contato@engenhariaduarte.com.br</a></li>
         <li><a href="https://www.instagram.com/eng.keziaduarte" target="_blank">@eng.keziaduarte</a></li>
         <li><a href="#sobre">A Engenheira</a></li>
@@ -837,6 +956,21 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
 window.addEventListener('scroll',()=>{document.getElementById('navbar').style.background=window.scrollY>40?'rgba(8,8,8,.98)':'rgba(8,8,8,.93)';});
 function toggleMenu(){document.getElementById('mobMenu').classList.toggle('open')}
 function closeMob(){document.getElementById('mobMenu').classList.remove('open')}
+
+// Kicker rotativo do hero — "Engenharia que resiste à perícia / à fiscalização / ao tribunal / ao tempo"
+(function(){
+  const wrap=document.getElementById('kickerRotate');
+  if(!wrap)return;
+  const items=wrap.querySelectorAll('span');
+  if(items.length<2)return;
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  let i=0;
+  setInterval(()=>{
+    items[i].classList.remove('active');
+    i=(i+1)%items.length;
+    items[i].classList.add('active');
+  },2600);
+})();
 
 // TABS
 function switchTab(id,el){
@@ -889,19 +1023,30 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
     .from('.hero-title',{y:40,opacity:0,duration:.85,ease:'power3.out'},'-=.4')
     .from('.hero-sub',{y:25,opacity:0,duration:.7,ease:'power3.out'},'-=.5')
     .from('.hero-btns',{y:20,opacity:0,duration:.65,ease:'power3.out'},'-=.4')
-    .from('.hero-trust',{y:18,opacity:0,duration:.6,ease:'power3.out'},'-=.35')
+    .from('.credentials-card',{y:18,opacity:0,duration:.6,ease:'power3.out'},'-=.35')
     .from('.hero-stars',{y:14,opacity:0,duration:.55,ease:'power3.out'},'-=.3')
     .from('.hero-portrait',{x:60,opacity:0,duration:1,ease:'power3.out'},'-=1');
+
+  // Traçado técnico das torres — desenha como esboço
+  ['#towerDraw1','#towerDraw2','#towerDraw3','#towerBase'].forEach((sel,i)=>{
+    const p=document.querySelector(sel);
+    if(!p)return;
+    const len=p.getTotalLength();
+    p.style.strokeDasharray=len;
+    p.style.strokeDashoffset=len;
+    gsap.to(p,{strokeDashoffset:0,duration:1.3,delay:.6+i*.25,ease:'power2.inOut'});
+  });
 
   // Stats counters
   document.querySelectorAll('.stat-item .num').forEach(el=>{
     const txt=el.textContent;
-    const num=parseFloat(txt.replace(/[^0-9.]/g,''));
+    const num=parseFloat(txt.replace(',','.').replace(/[^0-9.]/g,''));
     if(!num)return;
     const suffix=txt.replace(/[0-9.,]/g,'');
+    const isDecimal=!Number.isInteger(num);
     ScrollTrigger.create({trigger:el,start:'top 88%',once:true,onEnter:()=>{
       gsap.to({v:0},{v:num,duration:1.6,ease:'power2.out',
-        onUpdate:function(){el.textContent=(Number.isInteger(num)?Math.round(this.targets()[0].v):this.targets()[0].v.toFixed(1))+suffix;}
+        onUpdate:function(){el.textContent=(isDecimal?this.targets()[0].v.toFixed(1).replace('.',','):Math.round(this.targets()[0].v))+suffix;}
       });
     }});
   });
