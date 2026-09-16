@@ -1002,7 +1002,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2025 Duarte Engenharia Ltda. Todos os direitos reservados. — Balneário Camboriú, SC, Brasil</p>
+    <p>© <span id="footerYear">2026</span> Duarte Engenharia Ltda. Todos os direitos reservados. — Balneário Camboriú, SC, Brasil</p>
     <p style="color:rgba(201,168,76,.3);font-size:.68rem">CREA-SC 191277-4 · CREA-RS 253921 · Normas ABNT</p>
   </div>
 </footer>
@@ -1051,6 +1051,10 @@ function toggleFaq(btn){
   document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
   if(!isOpen)item.classList.add('open');
 }
+
+// Ano do rodapé sempre atualizado
+const footerYearEl=document.getElementById('footerYear');
+if(footerYearEl)footerYearEl.textContent=new Date().getFullYear();
 
 // DIAGNÓSTICO
 let diagCount=0;
