@@ -376,7 +376,12 @@ h2.stitle span{color:var(--gold)}
 
 /* ── FAQ ── */
 #faq{background:var(--black)}
-.faq-wrap{max-width:720px;margin:0 auto}
+.faq-layout{display:grid;grid-template-columns:.85fr 1.15fr;gap:2rem;align-items:start}
+.faq-visual{position:sticky;top:110px;height:560px}
+.faq-visual .faq-img{position:relative;width:100%;height:100%}
+.faq-visual .faq-img img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(50%) sepia(15%) saturate(115%) brightness(.62) contrast(1.05);mask-image:radial-gradient(ellipse 78% 75% at 50% 50%,#000 50%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 78% 75% at 50% 50%,#000 50%,transparent 100%)}
+.faq-visual .faq-img::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(139,105,20,.16) 0%,transparent 45%),linear-gradient(180deg,transparent 35%,rgba(8,8,8,.55) 100%);pointer-events:none}
+.faq-wrap{max-width:none;margin:0}
 .faq-item{border-bottom:1px solid rgba(201,168,76,.1)}
 .faq-q{width:100%;background:none;border:none;color:var(--white);text-align:left;padding:1.2rem 0;font-size:.88rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-family:'Inter',sans-serif}
 .faq-q:hover{color:var(--gold)}
@@ -450,7 +455,9 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
   .nav-links a{font-size:.7rem}
 }
 @media(max-width:960px){
-  .sobre-layout,.contato-layout,.diag-layout{grid-template-columns:1fr;gap:2.5rem}
+  .sobre-layout,.contato-layout,.diag-layout,.faq-layout{grid-template-columns:1fr;gap:2.5rem}
+  .faq-visual{position:static;height:280px}
+  .faq-visual .faq-img img{mask-image:radial-gradient(ellipse 90% 85% at 50% 50%,#000 15%,transparent 100%);-webkit-mask-image:radial-gradient(ellipse 90% 85% at 50% 50%,#000 15%,transparent 100%)}
   .steps-grid{grid-template-columns:1fr 1fr;gap:2rem}
   .steps-line-bg,.steps-line-fill{display:none}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem}
@@ -864,6 +871,12 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="divider"></div>
     <h2 class="stitle">Perguntas que nossos <span>clientes fazem</span></h2>
   </div>
+  <div class="faq-layout">
+    <div class="faq-visual" aria-hidden="true">
+      <div class="faq-img">
+        <img src="arquitetura-bg.jpg" alt="" loading="lazy">
+      </div>
+    </div>
   <div class="faq-wrap">
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Como funciona a primeira consulta técnica?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Você conta a situação do imóvel pelo WhatsApp, a Eng.ª Kézia avalia o caso e indica qual tipo de análise ou diagnóstico é necessário, com valor e prazo definidos antes de qualquer serviço ser iniciado — sem letras miúdas.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O valor do serviço é fixo ou varia?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Cada imóvel tem uma situação diferente, então o orçamento é feito sob medida após a análise técnica inicial — sem cobrança surpresa. Você recebe uma proposta clara, com escopo e valor fechados, antes de aprovar qualquer etapa.</div></div></div>
@@ -875,6 +888,7 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">O que é o CNO e por que preciso dele?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O CNO é o registro da construção na Receita Federal, obrigatório para obras de engenharia civil. Sem ele, não é possível recolher o INSS de obra nem obter a CND, exigida pelo cartório para averbação e por bancos para financiamento.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Vocês atendem fora de Balneário Camboriú?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Atendemos todo o litoral catarinense — Florianópolis, Itajaí, Camboriú, Itapema, Bombinhas e região — além de SC, RS e PR presencialmente, com atendimento em São Paulo e Rio de Janeiro em breve. Para regularização fiscal (CNO/INSS/CND/ISSQN) junto à Receita Federal e prefeituras, o atendimento é nacional, remoto para todo o Brasil.</div></div></div>
     <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)">Qual a diferença entre laudo pericial e parecer técnico?<div class="faq-icon"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O laudo pericial é formal e completo, indicado para processos judiciais. O parecer técnico é mais objetivo e ágil, indicado para decisões extrajudiciais, negociações ou análises preliminares.</div></div></div>
+  </div>
   </div>
 </section>
 
