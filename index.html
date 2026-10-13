@@ -922,24 +922,26 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
         </a>
       </div>
     </div>
-    <div class="contato-form">
+    <form class="contato-form" id="leadForm" data-lead-form>
       <div class="form-title">Solicite uma análise técnica</div>
-      <p class="form-sub">Grátis e sem compromisso — respondemos em até 24h úteis</p>
+      <p class="form-sub">Contato inicial sem compromisso. Respondemos em até 24h úteis.</p>
       <div class="form-row">
-        <div class="form-group"><label>Seu nome</label><input type="text" placeholder="Nome completo"/></div>
-        <div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(47) 99999-9999"/></div>
+        <div class="form-group"><label for="leadName">Seu nome</label><input id="leadName" name="name" type="text" placeholder="Nome completo" required maxlength="120" autocomplete="name"/></div>
+        <div class="form-group"><label for="leadPhone">WhatsApp</label><input id="leadPhone" name="phone" type="tel" placeholder="(47) 99999-9999" required maxlength="20" autocomplete="tel"/></div>
       </div>
-      <div class="form-group"><label>E-mail</label><input type="email" placeholder="email@exemplo.com"/></div>
-      <div class="form-group"><label>Necessidade</label>
-        <select><option value="" disabled selected>Selecione o serviço</option><option>Regularização de imóvel / Habite-se</option><option>INSS de obra / CNO / CND</option><option>Perícia ou laudo técnico</option><option>Averbação de construção</option><option>Retificação de área</option><option>Bombeiros (AVCB/CLCB)</option><option>Outro</option></select>
+      <div class="form-group"><label for="leadEmail">E-mail (opcional)</label><input id="leadEmail" name="email" type="email" placeholder="email@exemplo.com" maxlength="254" autocomplete="email"/></div>
+      <div class="form-group"><label for="leadService">Necessidade</label>
+        <select id="leadService" name="service" required><option value="" disabled selected>Selecione o serviço</option><option>Regularização de imóvel / Habite-se</option><option>INSS de obra / CNO / CND</option><option>Perícia ou laudo técnico</option><option>Averbação de construção</option><option>Retificação de área</option><option>Bombeiros (AVCB/CLCB)</option><option>Outro</option></select>
       </div>
-      <div class="form-group"><label>Situação</label><textarea placeholder="Descreva brevemente sua situação..."></textarea></div>
-      <a href="https://wa.me/message/G3MWKGBT5GHMA1" target="_blank" class="btn-gold" style="width:100%;justify-content:center;margin-top:.3rem">
+      <div class="form-group"><label for="leadCity">Cidade e UF do imóvel</label><input id="leadCity" name="city" required maxlength="100" placeholder="Ex.: Balneário Camboriú, SC"/></div>
+      <div class="form-group"><label for="leadSource">Como nos encontrou? (opcional)</label><select id="leadSource" name="source"><option value="">Prefiro não informar</option><option>Google</option><option>Bing</option><option>Instagram</option><option>Facebook</option><option>YouTube</option><option>Indicação</option><option>Outro</option></select></div>
+      <div style="position:absolute;left:-10000px" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off"></label></div><div class="form-group"><label for="leadSituation">Situação (opcional)</label><textarea id="leadSituation" name="situation" maxlength="1500" placeholder="Descreva brevemente sua situação..."></textarea></div>
+      <button type="submit" class="btn-gold" style="width:100%;justify-content:center;margin-top:.3rem">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
-        Enviar pelo WhatsApp →
-      </a>
-      <p class="form-privacy">🔒 Seus dados são usados apenas para retorno técnico. Sem spam.</p>
-    </div>
+        Enviar solicitação →
+      </button>
+      <p class="form-privacy">Usamos seus dados para retornar sua solicitação e registrar a origem do contato. <a href="/privacidade/">Política de privacidade</a>.</p><p data-status role="status" aria-live="polite"></p><a data-fallback hidden>Continuar pelo WhatsApp</a>
+    </form>
   </div>
 </section>
 
@@ -986,10 +988,10 @@ footer{background:#060606;border-top:1px solid rgba(201,168,76,.1);padding:44px 
     <div class="footer-col">
       <h4>Serviços</h4>
       <ul>
-        <li><a href="#servicos">Regularização Imobiliária</a></li>
-        <li><a href="#servicos">Habite-se e Averbação</a></li>
-        <li><a href="#servicos">INSS de Obra / CND</a></li>
-        <li><a href="#servicos">Perícia e Laudos</a></li>
+        <li><a href="/regularizacao-de-imoveis-balneario-camboriu/">Regularização Imobiliária</a></li>
+        <li><a href="/habite-se-averbacao-balneario-camboriu/">Habite-se e Averbação</a></li>
+        <li><a href="/inss-de-obra/">INSS de Obra / CND</a></li>
+        <li><a href="/avaliacao-de-imoveis-balneario-camboriu/">Perícia e Laudos</a></li>
         <li><a href="#servicos">Bombeiros (AVCB/CLCB)</a></li>
         <li><a href="#servicos">Inspeção Predial</a></li>
       </ul>
@@ -1172,5 +1174,7 @@ if(typeof gsap!=='undefined'&&typeof ScrollTrigger!=='undefined'){
   });
 }
 </script>
+
+<script src="/assets/leads.js" defer></script>
 </body>
 </html>
