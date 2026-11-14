@@ -24,12 +24,16 @@
     if (source === 'youtube' || /(^|\.)youtube\.com$/.test(source)) return 'YouTube';
     return 'Desconhecida';
   }
+  const pending = new WeakMap();
   function collect(form) {
     const values = Object.fromEntries(new FormData(form));
     const service = form.dataset.service || values.service;
-    const fields = [['personType','Responsável'],['area','Área (m²)'],['constructionType','Tipo de construção'],['start','Início'],['end','Conclusão'],['cno','CNO'],['sero','SERO'],['accounting','Escrituração'],['labor','Mão de obra'],['payments','Recolhimentos']];
+    const fields = [['goal','Objetivo'],['timeframe','Prazo informado'],['personType','Responsável'],['area','Área (m²)'],['constructionType','Tipo de construção'],['start','Início'],['end','Conclusão'],['cno','CNO'],['sero','SERO'],['accounting','Escrituração'],['labor','Mão de obra'],['payments','Recolhimentos']];
     const diagnosis = fields.filter(([key]) => values[key]).map(([key,label]) => label + ': ' + values[key]).join('\n');
-    return { requestId: crypto.randomUUID(), name: values.name.trim(), phone: values.phone.trim(), email: (values.email || '').trim(), service, city: values.city.trim(), source: values.source || '', situation: [values.situation, diagnosis].filter(Boolean).join('\n').slice(0, 1500), website: values.website || '', attribution: { landingPage: first.landingPage, referrer: first.referrer, firstSource: inferredSource(first), lastSource: inferredSource(current), utmSource: first.utm_source || '', utmMedium: first.utm_medium || '', utmCampaign: first.utm_campaign || '', utmContent: first.utm_content || '', utmTerm: first.utm_term || '' } };
+    const fingerprint = JSON.stringify(values);
+    let attempt = pending.get(form);
+    if (!attempt || attempt.fingerprint !== fingerprint) { attempt = {fingerprint, id:crypto.randomUUID()}; pending.set(form, attempt); }
+    return { requestId: attempt.id, name: values.name.trim(), phone: values.phone.trim(), email: (values.email || '').trim(), service, city: values.city.trim(), source: values.source || '', situation: [diagnosis, values.situation].filter(Boolean).join('\n').slice(0, 1500), website: values.website || '', attribution: { landingPage: first.landingPage, referrer: first.referrer, firstSource: inferredSource(first), lastSource: inferredSource(current), utmSource: first.utm_source || '', utmMedium: first.utm_medium || '', utmCampaign: first.utm_campaign || '', utmContent: first.utm_content || '', utmTerm: first.utm_term || '' } };
   }
   function diagnostic(form) {
     const values = Object.fromEntries(new FormData(form));
@@ -54,27 +58,31 @@
     if (diagnose) diagnose.addEventListener('click', () => diagnostic(form));
     form.addEventListener('submit', async event => {
       event.preventDefault();
+      if (form.dataset.sending === 'true') return;
       const digits = phone.value.replace(/\D/g, '');
       phone.setCustomValidity(/^(?:55)?[1-9]\d{9,10}$/.test(digits) ? '' : 'Informe um telefone válido com DDD.');
       if (form.elements.end) form.elements.end.setCustomValidity(form.elements.start.value && form.elements.end.value && form.elements.start.value > form.elements.end.value ? 'A conclusão deve ser posterior ao início.' : '');
-      if (!form.reportValidity()) return;
+      if (!form.reportValidity()) { window.duarteTrack?.('form_error'); return; }
       const status = form.querySelector('[data-status]');
       const button = form.querySelector('button[type="submit"]');
       const fallback = form.querySelector('[data-fallback]');
       const payload = collect(form);
       fallback.hidden = true;
       fallback.href = 'https://wa.me/5547991233830?text=' + encodeURIComponent(['Olá, gostaria de solicitar uma análise técnica.', 'Nome: '+payload.name, 'WhatsApp: '+payload.phone, 'E-mail: '+payload.email, 'Serviço: '+payload.service, 'Cidade/UF: '+payload.city, 'Origem informada: '+payload.source, 'Página de entrada: '+payload.attribution.landingPage, payload.situation].join('\n'));
-      button.disabled = true; status.textContent = 'Enviando sua solicitação…';
+      form.dataset.sending = 'true'; button.disabled = true; status.textContent = 'Enviando sua solicitação…';
       try {
         const response = await fetch('/api/leads', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload), signal:AbortSignal.timeout(15000)});
         const result = await response.json();
         if (!response.ok || result.ok !== true) throw new Error('not-saved');
         status.textContent = 'Solicitação recebida. A Duarte Engenharia retornará pelo contato informado.';
+        window.duarteTrack?.('generate_lead');
+        pending.delete(form);
         form.reset();
       } catch (_) {
         status.textContent = 'Não foi possível confirmar o recebimento. Seus dados continuam preenchidos. Tente novamente ou envie pelo WhatsApp.';
+        window.duarteTrack?.('form_error');
         fallback.hidden = false;
-      } finally { button.disabled = false; }
+      } finally { button.disabled = false; form.dataset.sending = 'false'; }
     });
     if (form.elements.end) for (const input of [form.elements.start,form.elements.end]) input.addEventListener('input', () => form.elements.end.setCustomValidity(''));
   }

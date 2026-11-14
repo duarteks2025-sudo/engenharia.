@@ -1,0 +1,395 @@
+{
+  "project": "prj_fhsUatk3OsgDCWmHbxAXXi7Dv75d",
+  "baseline": "dpl_2y12Zjw2n9CQraxtzJN1khDCysxX",
+  "note": "Unchanged deployment source files are reused by Vercel SHA. The API and vercel.json from this baseline are authoritative; the older repository API must not replace them.",
+  "files": [
+    {
+      "file": "AUDITORIA-PRE-PUBLICACAO-V7-1.md",
+      "sha": "ddccfd1a6a633c335806635e9c591734dc4cfa7c"
+    },
+    {
+      "file": "AUDITORIA-V7-2.md",
+      "sha": "65db5fdece683eebf1262b6e4b7e466c1af761b4"
+    },
+    {
+      "file": "AUDITORIA-V7-3.md",
+      "sha": "0b0ac2d3e237d2f0f39903a32cfc36797d795a9e"
+    },
+    {
+      "file": "BRAND-CONTEXT.md",
+      "sha": "faf6cccc99fef181ef5a268d5759831e66789011"
+    },
+    {
+      "file": "CORRECAO-V734.md",
+      "sha": "ab8e8ab6f7255ad3bae5fda521f838fcec3215cf"
+    },
+    {
+      "file": "DESIGN.md",
+      "sha": "04367d92e47595c14f6c339f976be3d07428581f"
+    },
+    {
+      "file": "HOMOLOGACAO-V7-3-1.md",
+      "sha": "8a257833d057a4d8f986b1885fab513e1ad17eb5"
+    },
+    {
+      "file": "INTEGRACAO-CRM.md",
+      "sha": "72811d0eb6d02169a1f29f24b2aa491615be23b1"
+    },
+    {
+      "file": "NOTAS-REVISAO-V5-6.md",
+      "sha": "4d3d269bb690712fe884c4521e64113fa78866e1"
+    },
+    {
+      "file": "NOTAS-V736-PREVIEW.md",
+      "sha": "f31ce8942745cd678202249d093bbbd264465d05"
+    },
+    {
+      "file": "README-V2.md",
+      "sha": "5004bdf282452745c8c0b6c2b445b6f30a1ab150"
+    },
+    {
+      "file": "README-V3.md",
+      "sha": "a0e5a4baff79047dc6b18d762c3d5fe0cc78e815"
+    },
+    {
+      "file": "README-V5.md",
+      "sha": "963f7300afa621995b6fd200ceb271e03bac07a8"
+    },
+    {
+      "file": "README-V6.md",
+      "sha": "5c18bcbcb2e52b46829eadb3762df43bfb5634d2"
+    },
+    {
+      "file": "README-V7-3-2.md",
+      "sha": "a4cfb4d377dbb2275699b00096fa329ddeae74bd"
+    },
+    {
+      "file": "README-V7-3.md",
+      "sha": "26ba639d9cc9b47a1433009ba89ee76eb0d00a6a"
+    },
+    {
+      "file": "README-V7.md",
+      "sha": "40f4fc857df6b7eae7af1add951147e06f2377f7"
+    },
+    {
+      "file": "VALIDACAO-V733.md",
+      "sha": "400dd5ceeb8535629c0c64d5a2b88faaa5cbe434"
+    },
+    {
+      "file": "api/leads.js",
+      "sha": "dbbc4d6be9d02a4ad8188687dd57bd0ce21a7542"
+    },
+    {
+      "file": "arquitetura-bg.jpg",
+      "sha": "b4d8b6924d5e71be635c3caca74e6f66fea1e0dc"
+    },
+    {
+      "file": "assets/analytics.js",
+      "sha": "f12df3a2f93149280322cd3f3fffcea097f557dd"
+    },
+    {
+      "file": "assets/biblioteca-tecnica-v73.webp",
+      "sha": "591d836a98dc9180a82177eec01e957ff672584a"
+    },
+    {
+      "file": "assets/centro-conhecimento-v73.webp",
+      "sha": "4d6468e7e2ddbf740521eb59fc4e7f508a09444b"
+    },
+    {
+      "file": "assets/chapters.css",
+      "sha": "f294e89863b9a00a0c0dd35f0cdcf0420d678254"
+    },
+    {
+      "file": "assets/chapters.js",
+      "sha": "68505f720462d212298a22a197e1ef853b90d643"
+    },
+    {
+      "file": "assets/duarte-avaliacao-v73.webp",
+      "sha": "e11ac555dc75215ebe69190e3a13c7e3e078e81a"
+    },
+    {
+      "file": "assets/duarte-chapters-v744.css",
+      "sha": "0e08f0346ba4f1dd77dbdd72b75e6a8d76353416"
+    },
+    {
+      "file": "assets/duarte-chapters-v744.js",
+      "sha": "48942ba282aafbccde14d57eb51038ccb6677139"
+    },
+    {
+      "file": "assets/duarte-gold-editorial-v745.css",
+      "sha": "816b7ac3ce6cb2032e9d11353a7a2b224751825c"
+    },
+    {
+      "file": "assets/duarte-inss-editorial-v746.svg",
+      "sha": "fd1d1c6fff31d21c1c9536adbc02655981eeb8ef"
+    },
+    {
+      "file": "assets/duarte-inss-interest-v745.js",
+      "sha": "c6b367a0bd91369b55876449d8c1476642c7726f"
+    },
+    {
+      "file": "assets/duarte-inss-premium-v748.avif",
+      "sha": "7b94c5dac53606354c62efea58c9abdc64ec4c4e"
+    },
+    {
+      "file": "assets/duarte-inss-v744.css",
+      "sha": "0ee324c03d6ed74e0b42f36ea385d14145e2cd64"
+    },
+    {
+      "file": "assets/duarte-kits-uncropped-v744.css",
+      "sha": "3b7286addf446f46e1d4c8336b8fd580edabc404"
+    },
+    {
+      "file": "assets/duarte-microsites-mobile-v744.css",
+      "sha": "80c39f95be2b33d7ca07d412f7ad350a50c53b81"
+    },
+    {
+      "file": "assets/duarte-vistoria-v73.webp",
+      "sha": "c163516cff619345ef6223ced234d42a2d8ab7b0"
+    },
+    {
+      "file": "assets/foto-engenheira-principal.webp",
+      "sha": "985ecef7da8e3e81a0c974e6fb8990d271b707aa"
+    },
+    {
+      "file": "assets/foto-engenheira-projetos.webp",
+      "sha": "7550eb8a5de3c170b2f3c7a6436c93fdb0e3db11"
+    },
+    {
+      "file": "assets/foto-engenheira-retrato.webp",
+      "sha": "e65e0963152f10dfe55955aa3fcc16ddbb74402d"
+    },
+    {
+      "file": "assets/home.691d839d89.css",
+      "sha": "5ee1b09b645cc34edb39b817f97264dbd01f3b5a"
+    },
+    {
+      "file": "assets/kezia-portrait.webp",
+      "sha": "f9a367404434ad6885d2623d48fb568c025876b8"
+    },
+    {
+      "file": "assets/kit-avaliacao-v73.webp",
+      "sha": "eeec0bde4a48b42d50d6479472e2b29a3ad6de3a"
+    },
+    {
+      "file": "assets/kit-danos-v73.webp",
+      "sha": "30fc98fccfd3fc080145d09a1f76a7439f63e5d6"
+    },
+    {
+      "file": "assets/kit-pericia-v73.webp",
+      "sha": "26770e5a91fbd1bcc59bfbd3e48c0585a4f8c10a"
+    },
+    {
+      "file": "assets/kit-regularizacao-v73.webp",
+      "sha": "bf7568e4ddfd8bc2225fdb6b5a82e17ea1ded1ee"
+    },
+    {
+      "file": "assets/leads.js",
+      "sha": "82e3c86e7d6da31c04a058734f01966a3843cb84"
+    },
+    {
+      "file": "assets/logo.webp",
+      "sha": "eb6bc9dde25bd8e3250e1cfc5e430dc97a308598"
+    },
+    {
+      "file": "assets/planta-inss.svg",
+      "sha": "0d57048bbe746f5197c911594d200fc067de549d"
+    },
+    {
+      "file": "assets/planta-regularizacao.svg",
+      "sha": "9541b53c41e9082bfeb513f47469c264d15a6a7d"
+    },
+    {
+      "file": "assets/privacy.css",
+      "sha": "da2ec71ec7c6791bd7f47504020216ab2dd8d72d"
+    },
+    {
+      "file": "assets/services.css",
+      "sha": "6154033b6e665c04392bbcc8f6b304756359a39c"
+    },
+    {
+      "file": "assets/v2.css",
+      "sha": "4958e306a160022981483ab5b40052ada3ab740b"
+    },
+    {
+      "file": "assets/v2.js",
+      "sha": "c2e07620d8ee43b346a367324d00bb5848766521"
+    },
+    {
+      "file": "assets/v5.css",
+      "sha": "e84d1d32b4eae02d8f62343a2972b15ee89719e4"
+    },
+    {
+      "file": "assets/v5.js",
+      "sha": "59bd2213746130dc9f32b51ed003f8e593225536"
+    },
+    {
+      "file": "assets/v6.css",
+      "sha": "11ce2d94c39511c9cab43da2e9bfa5138651195c"
+    },
+    {
+      "file": "assets/v6.js",
+      "sha": "b0824db05c11f78137d1a8bf477c5efd4973ab7e"
+    },
+    {
+      "file": "assets/v7-2.css",
+      "sha": "e6e1ab4773fe99fca9f2475a4e4d1d87ec7945bd"
+    },
+    {
+      "file": "assets/v7-3.css",
+      "sha": "f90cbe9296bae835e2ae0333f1c3a86b163a2a1d"
+    },
+    {
+      "file": "assets/v7-3.js",
+      "sha": "66c8902a91f44c9f0f0c4c65f153cb0fcdbd480a"
+    },
+    {
+      "file": "assets/v7.css",
+      "sha": "4b48c3232d8d87f35ad715d8baadbf0b3df3139a"
+    },
+    {
+      "file": "avaliacao-de-imoveis-balneario-camboriu/index.html",
+      "sha": "d0c79183b26c23f874c65d44d94c0aa582cd1adf"
+    },
+    {
+      "file": "casos-reais/decadencia-inss-obra/index.html",
+      "sha": "2e59fb670ad2b5c0148b8f3a39bccae5bc17414b"
+    },
+    {
+      "file": "casos-reais/index.html",
+      "sha": "c0048d1f9223c50641d724da5b86c4d9ec536099"
+    },
+    {
+      "file": "casos-reais/planejamento-inss-fator-ajuste/index.html",
+      "sha": "3c51fff85c1a8422c4aad9ad699bfa9264dc453a"
+    },
+    {
+      "file": "casos-reais/regularizacao-condominio-navegantes/index.html",
+      "sha": "972ccdf80e677c7d8fc3fd10e4e284d1a8a9edad"
+    },
+    {
+      "file": "consultoria-diagnostico/index.html",
+      "sha": "2e56b06e4cf1354ab1a7429f0946978c3de53ea2"
+    },
+    {
+      "file": "especialidades/index.html",
+      "sha": "f180ce035a219fd2c9f4f44163bfc4918308a588"
+    },
+    {
+      "file": "habite-se-averbacao-balneario-camboriu/index.html",
+      "sha": "6fe6f77a407b0238f4e30b2c9565eff93431d305"
+    },
+    {
+      "file": "hero-blueprint-gold.jpg",
+      "sha": "2146079913746131f63fb7104aa533fe1087f8f9"
+    },
+    {
+      "file": "index.html",
+      "sha": "88aa72dc11d92070d860a36cd1c282bdd22ff7a0"
+    },
+    {
+      "file": "index_html_ga.html",
+      "sha": "1faaea59b1efbd33f4d10e531483a8e80f038e5a"
+    },
+    {
+      "file": "inss-de-obra/index.html",
+      "sha": "54b5db1436bb5d7c38e4848f977cc07411021fcc"
+    },
+    {
+      "file": "kezia-hero.png",
+      "sha": "2e2fb17fe495a9b32da7733765914e7cc00612a0"
+    },
+    {
+      "file": "kezia-portrait.png",
+      "sha": "a3d53c67e5c3dad65f62ecfa14e93eaa592ff280"
+    },
+    {
+      "file": "laudos-avaliacao-imoveis/index.html",
+      "sha": "128826ddc1b8f17d648713d117794a065e88fc75"
+    },
+    {
+      "file": "logo.png",
+      "sha": "e1f3f4b554e2e17b3d04c67f763bbfb1de555670"
+    },
+    {
+      "file": "medicao-base.html",
+      "sha": "810e2625948169db04631afd917f39b0dcd4fbec"
+    },
+    {
+      "file": "medicao.html",
+      "sha": "974524f0f6b488a72031ec591c8ce0a609a4662a"
+    },
+    {
+      "file": "mentoria-especializada/index.html",
+      "sha": "ed6e13c0c758ad41a8cb2c5979ffb6109b4b46fc"
+    },
+    {
+      "file": "patologias-danos-construtivos/index.html",
+      "sha": "c25052ecececcb2dc3e443c4b32e3f865c70c595"
+    },
+    {
+      "file": "pericias-judiciais-engenharia/index.html",
+      "sha": "4c0ee5b9008a564a9c6efa3afe03664eeb7687bd"
+    },
+    {
+      "file": "privacidade/index.html",
+      "sha": "58d7c807a444ef49df56157f4090626c78c687a4"
+    },
+    {
+      "file": "profissionais/biblioteca-tecnica/index.html",
+      "sha": "12988f6137da9c3a50064fb1aaab123c9f504e60"
+    },
+    {
+      "file": "profissionais/conhecimento/index.html",
+      "sha": "57e2b8165c35f097feeadbfdc85d05767f2cdfe4"
+    },
+    {
+      "file": "profissionais/index.html",
+      "sha": "a9c63d1c1e3541df58c3a498c4812c113e2cd52b"
+    },
+    {
+      "file": "profissionais/modelos/index.html",
+      "sha": "bfba65c2b13ebcb867e850a92dcea4a3d6ebea8b"
+    },
+    {
+      "file": "regularizacao-de-imoveis-balneario-camboriu/index.html",
+      "sha": "bb62240ab909e9c5a247209ee1c7981aa0d2d669"
+    },
+    {
+      "file": "robots.txt",
+      "sha": "68ca68f4126851744b191705a6a0bfb839692096"
+    },
+    {
+      "file": "sitemap.xml",
+      "sha": "b9e130a3ba8c4f3bf0d7d8bdf749fb402f183039"
+    },
+    {
+      "file": "software/avaliacao/index.html",
+      "sha": "5bcaf79277e5c10d0cd9b64ea7005d49fd0bb78f"
+    },
+    {
+      "file": "software/index.html",
+      "sha": "795bf28476c6ae98373a0638496b1cc9626fb2bd"
+    },
+    {
+      "file": "software/inss-de-obra/index.html",
+      "sha": "84218ad13364488c8642a2d93262391e7e24bc34"
+    },
+    {
+      "file": "tests/analytics.cjs",
+      "sha": "08648e994fbca15cd7111e726018c653f8849c6f"
+    },
+    {
+      "file": "tests/form.cjs",
+      "sha": "5230b07e4eda86497b22a04bd5e474c9f7631fbb"
+    },
+    {
+      "file": "tests/leads.cjs",
+      "sha": "309dd32112bd318508e573afad4f456fe6372122"
+    },
+    {
+      "file": "vercel.json",
+      "sha": "6bfa2871129aba10fcdc11ed61cc747310c43008"
+    }
+  ]
+}

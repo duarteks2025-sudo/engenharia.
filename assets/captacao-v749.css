@@ -1,0 +1,21 @@
+/* Service-specific contact paths, preserving the Duarte visual identity. */
+.lead-actions{display:flex;align-items:center;flex-wrap:wrap;gap:12px 22px}
+.lead-actions .text-link{text-decoration:underline;text-underline-offset:4px}
+.lead-note{font-size:13px!important;line-height:1.6;color:#cfc6b7;max-width:650px}
+.lead-scenarios{max-width:1170px;margin:0 auto;padding:24px 5vw 38px}
+.lead-scenarios h2{max-width:800px}
+.lead-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lead-card{display:flex;flex-direction:column;align-items:flex-start;padding:24px;border:1px solid #655339;background:#1d1a15;min-width:0}
+.lead-card h3{font:500 23px/1.25 Georgia,serif;margin:0 0 12px;color:#f4ebdc}
+.lead-card p{margin:0 0 20px;color:#d1c7b9;font-size:14px}
+.lead-card a{margin-top:auto;min-height:44px;display:inline-flex;align-items:center;color:#edca94;text-decoration:underline;text-underline-offset:4px;font-weight:600}
+.lead-proof{max-width:1070px;margin:20px auto 40px;padding:30px;background:#eee6d8;color:#241e17}
+.lead-proof p{max-width:850px}.lead-proof a{display:inline-flex;align-items:center;min-height:44px;text-decoration:underline;font-weight:600;color:#66471d}
+.lead-optional{margin:15px 0 22px;border:1px solid #655339;padding:16px}
+.lead-optional summary{cursor:pointer;min-height:44px;display:list-item;color:#edca94;font-weight:600}
+.lead-optional fieldset{margin:18px 0 0}.lead-optional .secondary{margin-bottom:8px}
+.lead-qualification{margin:12px 0 0}.lead-return{padding:24px;border:1px solid #b99863;margin:28px 0}.lead-return a{text-decoration:underline;font-weight:600}
+body.lead-home .hero-copy h1{font-size:clamp(38px,4.1vw,66px);line-height:1.12}
+@media(max-width:760px){.lead-grid{grid-template-columns:1fr}.lead-scenarios{padding-top:10px}.lead-card{padding:20px}.lead-proof{margin:15px 5vw 30px;padding:24px}.lead-actions{align-items:stretch;gap:12px}.lead-actions .button{width:100%}.lead-actions .text-link{display:inline-flex;align-items:center;min-height:44px}.lead-optional{padding:13px}body.lead-home .hero-copy h1{font-size:clamp(35px,9vw,50px)}}
+
+.lead-card p,.lead-note,.lead-proof p{text-align:left;hyphens:none}
